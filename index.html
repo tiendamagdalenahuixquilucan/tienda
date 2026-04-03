@@ -275,7 +275,7 @@
         const getAuthStore = () => JSON.parse(sessionStorage.getItem('auth_store'));
 
         // ==========================================
-        // 2. COMUNICACIÓN CON BASE DE DATOS (FETCH)
+        // 2. COMUNICACIÓN CON BASE DE DATOS (FETCH SEGURO)
         // ==========================================
         const fetchInitialData = async () => {
             try {
@@ -289,11 +289,18 @@
                     bannersDB = result.data.banners || [];
                 }
             } catch (error) {
-                console.error("Error cargando base de datos, asegurate que las pestañas en sheets existan: ", error);
-                // Si la base de datos está vacía o hay error, no rompemos la web, dejamos arrays vacíos.
-                if(storesDB.length === 0) storesDB = [];
+                // Modificado para no registrar el error como un fallo crítico en la consola
+                console.warn("Aviso: No se pudo conectar a Google Sheets. Cargando entorno de prueba local. Detalle:", error.message);
+                
+                // Mostrar alerta sutil al usuario
+                setTimeout(() => showToast("Modo de prueba local (Fallo de conexión a Google)"), 1500);
+                
+                // Cargar datos de prueba para no dejar la pantalla en blanco
+                if(storesDB.length === 0) {
+                    storesDB = [{ id: 't1', slug: 'demo', name: 'Tienda de Prueba', categoryId: 'comida', phone: '0000000000', saldo_total: 10 }];
+                    productsDB = [{ id: 'p1', storeId: 't1', slug: 'error', name: 'Zapatos Deportivos', price: 500, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400', description: 'Producto de prueba (Sin conexión al servidor).', isHighlighted: true }];
+                }
             } finally {
-                // Quitar pantalla de carga
                 document.getElementById('global-loader').style.opacity = '0';
                 setTimeout(() => document.getElementById('global-loader').remove(), 300);
                 router(); 
@@ -306,12 +313,15 @@
             try {
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8', 
+                    },
                     body: JSON.stringify(payload)
                 });
                 return await response.json();
             } catch (error) {
-                console.error("Error haciendo POST:", error);
-                return { status: 'error', message: 'Error de conexión con el servidor.' };
+                console.warn("Fallo en la comunicación POST:", error.message);
+                return { status: 'error', message: 'Error de red. Verifica los permisos de Apps Script ("Cualquier persona").' };
             }
         };
 
@@ -427,7 +437,6 @@
             const res = await postToAppsScript(payload);
             
             if(res.status === 'success') {
-                // Actualizamos la vista localmente para no tener que recargar toda la BD
                 productsDB.push({ ...payload, slug: payload.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''), id: 'P' + Math.floor(Math.random()*10000) });
                 e.target.reset(); 
                 showToast("Producto publicado exitosamente.");
@@ -455,7 +464,6 @@
             const d = cart.reduce((acc, i) => { if(i.product.storeId === sId) { acc.items.push(i); acc.total += (i.product.price * i.quantity); if(!acc.p) acc.p = getStoreById(sId).phone; } return acc; }, { items: [], total: 0, p: '' });
             let m = `*¡Hola!* 👋\nMe interesa esto de MiPueblo Market:\n\n`; d.items.forEach(i => m += `▪️ ${i.quantity}x ${i.product.name} (${formatMoney(i.product.price * i.quantity)})\n`); m += `\n*Total: ${formatMoney(d.total)}*`;
             
-            // Lógica de cobro a Google Sheets con Anti-Fraude
             const last = localStorage.getItem(`last_${sId}`), now = new Date().getTime(); 
             if(!last || (now - parseInt(last)) > 1800000) { 
                 await postToAppsScript({ action: 'deductCredit', storeId: sId }); 

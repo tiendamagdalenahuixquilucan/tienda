@@ -35,19 +35,16 @@
         
         .product-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1); }
-        .category-item:hover .category-icon { transform: scale(1.1) rotate(5deg); }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800 antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-    <!-- Cargador -->
     <div id="global-loader" class="fixed inset-0 bg-white z-[100] flex flex-col items-center justify-center">
         <div class="bg-brand-600 text-white p-4 rounded-2xl mb-6 animate-float shadow-lg shadow-brand-500/30"><i class="ph-bold ph-storefront text-5xl"></i></div>
         <h2 class="text-2xl font-extrabold text-gray-900 tracking-tight">MiPueblo Market</h2>
         <p class="text-sm text-gray-500 mt-2 font-medium">Conectando comercios locales...</p>
     </div>
 
-    <!-- NavBar -->
     <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-gray-100" id="main-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -69,7 +66,6 @@
         </div>
     </nav>
 
-    <!-- SPA Router -->
     <main class="flex-1 flex flex-col">
         <!-- VISTA: HOME -->
         <section id="view-home" class="view-section">
@@ -93,10 +89,12 @@
                 </div>
                 <div class="mb-14 animate-fade-in-up" style="animation-delay: 0.3s;">
                     <div class="flex items-center gap-3 mb-6"><div class="bg-gradient-to-br from-yellow-100 to-yellow-200 p-2 rounded-xl text-yellow-600 shadow-sm"><i class="ph-fill ph-star text-2xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">Destacados</h2></div>
-                    <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 hide-scrollbar snap-x p-2 -m-2" id="destacados-container"></div>
+                    <!-- Carrusel Móvil arreglado: ancho de tarjeta w-44 -->
+                    <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 hide-scrollbar snap-x p-1" id="destacados-container"></div>
                 </div>
                 <div id="catalogo" class="animate-fade-in-up" style="animation-delay: 0.4s;">
                     <div class="flex items-center gap-3 mb-6"><div class="bg-gray-100 p-2 rounded-xl text-gray-600 shadow-sm"><i class="ph-bold ph-trend-up text-2xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">Novedades</h2></div>
+                    <!-- Cuadrícula arreglada para que no desborde en móvil -->
                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5" id="catalogo-container"></div>
                 </div>
             </div>
@@ -146,7 +144,7 @@
                         <p class="text-sm text-gray-500 mt-2 font-medium">¿Ya tienes cuenta? <a href="#/login" class="text-brand-600 font-bold hover:underline">Inicia sesión</a></p>
                     </div>
                     <form id="register-form" onsubmit="handleRegistration(event)" class="space-y-4">
-                        <input type="text" id="reg-name" placeholder="Nombre de la Tienda" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-brand-500">
+                        <input type="text" id="reg-name" placeholder="Nombre de la Tienda" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
                         <div>
                             <label class="block text-[10px] font-bold text-brand-600 mb-1 uppercase tracking-wider ml-1">Selecciona tu giro principal</label>
                             <select required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-white font-medium cursor-pointer" id="register-category"></select>
@@ -155,8 +153,7 @@
                         <input type="tel" id="reg-phone" placeholder="WhatsApp (10 dígitos)" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
                         <input type="email" id="reg-email" placeholder="Correo Electrónico" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
                         <input type="password" id="reg-pass" placeholder="Contraseña" required minlength="6" class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
-                        <div class="text-xs text-gray-500 mt-2 ml-1">Al registrarte aceptas nuestros <a href="#/terminos" class="text-brand-600 hover:underline">Términos</a> y <a href="#/privacidad" class="text-brand-600 hover:underline">Privacidad</a>.</div>
-                        <button type="submit" id="btn-register" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-xl mt-6 shadow-lg shadow-brand-500/30 transition-all">Registrar y Obtener Panel</button>
+                        <button type="submit" id="btn-register" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-xl mt-6 shadow-lg transition-all">Registrar y Obtener Panel</button>
                     </form>
                 </div>
             </div>
@@ -165,7 +162,7 @@
         <!-- VISTA: LOGIN -->
         <section id="view-login" class="view-section">
             <div class="max-w-md mx-auto px-4 py-20">
-                <div class="bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100 p-8">
+                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
                     <div class="text-center mb-8"><div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 text-blue-600 mb-4 animate-float"><i class="ph-bold ph-lock-key text-3xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">Acceso a Vendedores</h2></div>
                     <form onsubmit="handleLogin(event)" class="space-y-5">
                         <div id="login-error" class="hidden bg-red-50 text-red-600 p-3 rounded-xl text-sm text-center font-bold border border-red-100"></div>
@@ -173,42 +170,10 @@
                         <input type="password" id="login-password" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium" placeholder="••••••••">
                         <div class="text-right"><a href="#/recuperar-password" class="text-sm font-bold text-gray-500 hover:text-gray-900">¿Olvidaste tu contraseña?</a></div>
                         <button type="submit" id="btn-login" class="w-full py-3.5 bg-gray-900 hover:bg-black text-white font-extrabold rounded-xl shadow-lg transition-all">Iniciar Sesión</button>
-                        <p class="text-center text-sm text-gray-500 mt-4 font-medium">¿No tienes tienda? <a href="#/registro-vendedor" class="text-brand-600 font-bold hover:underline">Regístrate gratis</a></p>
                     </form>
                 </div>
             </div>
         </section>
-
-        <!-- VISTA: RECUPERAR CONTRASEÑA -->
-        <section id="view-forgot-password" class="view-section">
-            <div class="max-w-md mx-auto px-4 py-20">
-                <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
-                    <div class="text-center mb-6">
-                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-50 text-brand-600 mb-4"><i class="ph-bold ph-key text-3xl"></i></div>
-                        <h2 class="text-2xl font-extrabold text-gray-900">Recuperar Contraseña</h2>
-                        <p class="text-sm text-gray-500 mt-2 font-medium" id="reset-desc">Ingresa tu correo para generar un token de seguridad.</p>
-                    </div>
-                    <form id="form-req-token" onsubmit="requestResetToken(event)" class="space-y-4">
-                        <input type="email" id="reset-email" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium" placeholder="tucorreo@ejemplo.com">
-                        <button type="submit" id="btn-req-token" class="w-full py-3.5 bg-gray-900 text-white font-extrabold rounded-xl shadow-lg">Generar Token</button>
-                    </form>
-                    <form id="form-validate-token" onsubmit="confirmPasswordReset(event)" class="space-y-4 hidden mt-4 border-t border-gray-100 pt-6">
-                        <div class="bg-green-50 text-green-800 p-5 rounded-2xl text-center border border-green-100">
-                            <p class="text-[10px] uppercase font-black tracking-widest mb-1 text-green-600">Tu Token de Seguridad es:</p>
-                            <p class="text-4xl font-black tracking-widest" id="token-display">000000</p>
-                        </div>
-                        <input type="text" id="reset-token-input" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl text-center font-black tracking-widest text-lg bg-gray-50" placeholder="Ingresa el Token">
-                        <input type="password" id="reset-new-password" required minlength="6" class="block w-full px-4 py-3 border border-gray-200 rounded-xl font-medium bg-gray-50" placeholder="Nueva Contraseña">
-                        <button type="submit" id="btn-confirm-reset" class="w-full py-3.5 bg-brand-600 text-white font-extrabold rounded-xl shadow-lg">Guardar Nueva Contraseña</button>
-                    </form>
-                    <div class="text-center mt-6"><a href="#/login" class="text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors">Volver a inicio de sesión</a></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- VISTA: LEGALES -->
-        <section id="view-terms" class="view-section"><div class="max-w-4xl mx-auto px-4 py-16"><div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12"><h1 class="text-3xl font-black text-gray-900 mb-6">Términos y Condiciones</h1><div class="space-y-4 text-gray-600 font-medium text-sm leading-relaxed"><p><strong>1. Naturaleza de la Plataforma:</strong> MiPueblo Market opera única y exclusivamente como un directorio digital e intermediario de contacto. Nuestra plataforma facilita la visualización de catálogos locales y redirige la intención de compra mediante WhatsApp directamente al número proporcionado por cada comercio.</p><p><strong>2. Ausencia de Responsabilidad en Transacciones:</strong> La plataforma NO procesa pagos, NO retiene fondos, NO gestiona envíos y NO interviene en la logística de entrega. Todo acuerdo financiero, método de pago, garantía o disputa debe resolverse estrictamente de manera directa entre el Usuario Comprador y el Comercio Vendedor.</p><p><strong>3. Veracidad de la Información:</strong> Los comercios vendedores son los únicos responsables de la exactitud, legalidad, disponibilidad y calidad de los productos que publican. MiPueblo Market no avala ni garantiza la calidad de ningún producto ofertado.</p><p><strong>4. Créditos y Pagos de Vendedores:</strong> El modelo de negocio para vendedores se basa en la compra de "Créditos" que se descuentan al generar contactos a WhatsApp, destacar productos o solicitar banners. Una vez adquiridos, los créditos no son reembolsables.</p><p><strong>5. Suspensión de Cuentas:</strong> Nos reservamos el derecho de eliminar, suspender o bloquear tiendas que publiquen artículos ilegales, ofendan a otros usuarios, o acumulen reportes de fraude por parte de la comunidad, sin derecho a reembolso de sus créditos.</p></div></div></div></section>
-        <section id="view-privacy" class="view-section"><div class="max-w-4xl mx-auto px-4 py-16"><div class="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12"><h1 class="text-3xl font-black text-gray-900 mb-6">Aviso de Privacidad</h1><div class="space-y-4 text-gray-600 font-medium text-sm leading-relaxed"><p>De conformidad con las leyes de protección de datos aplicables, MiPueblo Market emite el presente aviso para informar a sus usuarios sobre el tratamiento de su información.</p><p><strong>1. Datos Recopilados:</strong> Para compradores, no exigimos registro. Para comercios vendedores, recopilamos: Nombre del comercio, Responsable, WhatsApp y Correo.</p><p><strong>2. Uso de la Información:</strong> Se utiliza exclusivamente para: a) Crear su escaparate digital. b) Redirigir pedidos de compradores a su WhatsApp. c) Acceso al panel administrativo. d) Contacto interno.</p><p><strong>3. Cookies y Almacenamiento Local:</strong> Utilizamos tecnologías como Local Storage y Session Storage exclusivamente con fines técnicos, anti-fraude y para mantener el estado del carrito temporalmente.</p><p><strong>4. Transferencia de Datos:</strong> MiPueblo Market NO vende, alquila ni transfiere los correos electrónicos o números telefónicos a terceros.</p></div></div></div></section>
 
         <!-- VISTA: PANEL DE CONTROL -->
         <section id="view-panel" class="view-section bg-gray-50 min-h-screen">
@@ -220,50 +185,45 @@
             </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-14">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-white rounded-3xl shadow-lg shadow-gray-200/50 p-6 border border-gray-100 flex items-center justify-between">
+                    <div class="bg-white rounded-3xl shadow-lg p-6 border border-gray-100 flex items-center justify-between">
                         <div><p class="text-sm font-bold text-gray-500 mb-1 uppercase tracking-wide">Créditos Disponibles</p><h3 class="text-5xl font-black text-gray-900" id="panel-credits">0</h3><p class="text-xs mt-2 font-semibold" id="panel-credits-status"></p></div>
                         <div class="w-16 h-16 rounded-2xl bg-brand-50 text-brand-600 flex justify-center items-center text-3xl shadow-inner"><i class="ph-fill ph-coins"></i></div>
                     </div>
-                    <div class="bg-white rounded-3xl shadow-lg shadow-gray-200/50 p-6 border border-gray-100 flex items-center justify-between">
+                    <div class="bg-white rounded-3xl shadow-lg p-6 border border-gray-100 flex items-center justify-between">
                         <div><p class="text-sm font-bold text-gray-500 mb-1 uppercase tracking-wide">Productos Publicados</p><h3 class="text-5xl font-black text-gray-900" id="panel-product-count">0</h3></div>
                         <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex justify-center items-center text-3xl shadow-inner"><i class="ph-fill ph-package"></i></div>
                     </div>
                 </div>
 
-                <!-- PUBLICIDAD PREMIUM -->
+                <!-- PUBLICIDAD PREMIUM (COBRO) -->
                 <div class="mb-8 border border-brand-200 bg-brand-50 rounded-3xl p-6 text-center shadow-sm flex flex-col md:flex-row justify-between items-center">
                     <div class="text-left mb-4 md:mb-0">
                         <h3 class="text-brand-800 font-extrabold mb-1 uppercase tracking-wide text-sm flex items-center gap-2"><i class="ph-bold ph-megaphone text-xl"></i> Publicidad Premium</h3>
                         <p class="text-sm text-brand-700 font-medium">Aparece en el carrusel de Banners de la página principal.</p>
                     </div>
-                    <button onclick="handleRequestBanner()" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3.5 rounded-xl text-sm font-extrabold transition-colors shadow-lg shadow-brand-500/30 w-full md:w-auto">Solicitar Banner (50 Créditos)</button>
+                    <button onclick="handleRequestBanner()" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3.5 rounded-xl text-sm font-extrabold shadow-lg w-full md:w-auto">Solicitar Banner (50 Créditos)</button>
                 </div>
 
                 <div class="flex flex-col md:flex-row gap-8 mb-12">
                     <div class="w-full md:w-1/3">
-                        <div class="bg-white rounded-3xl shadow-lg shadow-gray-200/50 p-6 border border-gray-100 sticky top-24">
+                        <div class="bg-white rounded-3xl shadow-lg p-6 border border-gray-100 sticky top-24">
                             <h3 class="text-lg font-extrabold mb-5 flex items-center gap-2 text-gray-900"><i class="ph-bold ph-plus-circle text-brand-600 text-xl"></i> Nuevo Producto</h3>
                             <form onsubmit="handleAddProduct(event)" class="space-y-4">
                                 <input type="text" id="new-prod-name" required class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Nombre del Producto">
                                 <input type="number" id="new-prod-price" required min="1" class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Precio ($)">
                                 <div class="relative">
-                                    <label class="block text-[10px] font-black text-gray-500 mb-1 uppercase tracking-wider ml-1">Foto (Solo JPG/JPEG)</label>
+                                    <label class="block text-[10px] font-black text-gray-500 mb-1 uppercase tracking-wider ml-1">Foto (Exclusivo JPG/JPEG)</label>
                                     <input type="file" id="new-prod-image-file" accept=".jpg,.jpeg,image/jpeg" capture="environment" required class="w-full p-2 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-extrabold file:bg-brand-100 file:text-brand-700 hover:file:bg-brand-200 cursor-pointer">
                                 </div>
                                 <textarea id="new-prod-desc" required rows="3" class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Añade una descripción llamativa..."></textarea>
-                                <button type="submit" id="btn-add-prod" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-xl shadow-lg transition-all">Publicar Producto</button>
+                                <button type="submit" id="btn-add-prod" class="w-full py-3.5 bg-brand-600 text-white font-extrabold rounded-xl shadow-lg w-full">Publicar Producto</button>
                             </form>
                         </div>
                     </div>
                     <div class="flex-1">
-                        <div class="bg-white rounded-3xl shadow-lg shadow-gray-200/50 border border-gray-100 overflow-hidden">
-                            <div class="px-6 py-5 bg-white border-b border-gray-100 flex justify-between items-center"><h3 class="font-extrabold text-gray-900">Tus Productos en Catálogo</h3></div>
+                        <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+                            <div class="px-6 py-5 bg-white border-b border-gray-100"><h3 class="font-extrabold text-gray-900">Tus Productos en Catálogo</h3></div>
                             <div class="divide-y divide-gray-100" id="panel-products-list"></div>
-                        </div>
-                        <div class="mt-8 border-2 border-red-100 bg-white rounded-3xl p-6 text-center shadow-sm">
-                            <h3 class="text-red-600 font-extrabold mb-2 uppercase tracking-wide text-sm">Zona de Peligro</h3>
-                            <p class="text-sm text-gray-500 mb-4 font-medium">Al eliminar tu tienda, ya no aparecerás en la plataforma y perderás tus créditos.</p>
-                            <button onclick="handleDeleteStore()" class="bg-red-50 hover:bg-red-600 text-red-600 hover:text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-colors border border-red-100"><i class="ph-bold ph-trash"></i> Eliminar Tienda</button>
                         </div>
                     </div>
                 </div>
@@ -271,38 +231,13 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-100 mt-auto py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-2 opacity-50"><i class="ph-fill ph-storefront text-xl text-brand-600"></i><span class="font-bold text-gray-900 text-sm">MiPueblo Market © 2026</span></div>
-            <div class="flex gap-6">
-                <a href="#/terminos" class="text-xs font-bold text-gray-400 hover:text-gray-900 transition-colors uppercase tracking-wider">Términos</a>
-                <a href="#/privacidad" class="text-xs font-bold text-gray-400 hover:text-gray-900 transition-colors uppercase tracking-wider">Privacidad</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- MODAL EDITAR -->
-    <div id="modal-edit-product" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center fade-in">
-        <div class="bg-white p-8 rounded-3xl w-full max-w-md shadow-2xl m-4 border border-gray-100">
-            <h3 class="text-xl font-extrabold mb-6 text-gray-900 flex items-center gap-2"><i class="ph-bold ph-pencil-simple text-brand-600"></i> Editar Producto</h3>
-            <div class="space-y-4">
-                <input type="hidden" id="edit-prod-id">
-                <div><label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wide">Nombre</label><input type="text" id="edit-prod-name" class="w-full p-3 border border-gray-200 rounded-xl text-sm font-medium bg-gray-50"></div>
-                <div><label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wide">Precio ($)</label><input type="number" id="edit-prod-price" class="w-full p-3 border border-gray-200 rounded-xl text-sm font-medium bg-gray-50"></div>
-                <div><label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wide">Descripción</label><textarea id="edit-prod-desc" rows="3" class="w-full p-3 border border-gray-200 rounded-xl text-sm font-medium bg-gray-50"></textarea></div>
-                <div class="flex gap-3 pt-4">
-                    <button onclick="saveEditProduct()" id="btn-save-edit" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 rounded-xl shadow-lg transition-all">Guardar Cambios</button>
-                    <button onclick="closeEditModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-extrabold py-3 rounded-xl transition-all">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Sidebar Carrito -->
     <div id="cart-overlay" class="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-50 hidden transition-opacity" onclick="toggleCart()"></div>
     <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white shadow-2xl z-50 translate-x-full transition-transform duration-300 flex flex-col rounded-l-3xl overflow-hidden border-l border-gray-100">
-        <div class="px-6 py-5 border-b border-gray-100 flex justify-between items-center bg-white"><h2 class="text-xl font-extrabold flex items-center gap-2 text-gray-900"><i class="ph-bold ph-shopping-cart text-brand-600"></i> Tu Carrito</h2><button onclick="toggleCart()" class="p-2 bg-gray-50 hover:bg-red-50 hover:text-red-500 rounded-full transition-colors"><i class="ph-bold ph-x"></i></button></div>
+        <div class="px-6 py-5 border-b border-gray-100 flex justify-between items-center bg-white">
+            <h2 class="text-xl font-extrabold flex items-center gap-2 text-gray-900"><i class="ph-bold ph-shopping-cart text-brand-600"></i> Tu Carrito</h2>
+            <button onclick="toggleCart()" class="p-2 bg-gray-50 hover:bg-red-50 hover:text-red-500 rounded-full transition-colors"><i class="ph-bold ph-x"></i></button>
+        </div>
         <div class="flex-1 overflow-y-auto p-6 bg-gray-50/50" id="cart-items-container"></div>
     </div>
     <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-3 w-full max-w-sm px-4 pointer-events-none"></div>
@@ -312,7 +247,7 @@
         // 1. CONFIGURACIÓN
         // ==========================================
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwR6yHGr1ge3_1QHQsAJMoMYcHHCVq0knm9TJed8klXFTuuxLm7m3RFgtJbPODlirtf4Q/exec'; 
-        const ADMIN_WHATSAPP = "521234567890"; // <-- ¡OJO! PON AQUÍ TU NÚMERO PARA RECIBIR SOLICITUDES DE BANNERS
+        const ADMIN_WHATSAPP = "521234567890"; // <-- CAMBIA ESTO POR TU NÚMERO REAL
         
         const categoriesDB = [
             { id: 'comida', name: 'Comida', icon: 'ph-hamburger', color: 'text-orange-500', bg: 'bg-orange-100' },
@@ -322,17 +257,18 @@
             { id: 'ropa', name: 'Moda y Ropa', icon: 'ph-t-shirt', color: 'text-pink-500', bg: 'bg-pink-100' }
         ];
 
-        let storesDB = []; let productsDB = []; let bannersDB = []; let cart = []; let currentCategoryProducts = []; let resetEmailTemporal = '';
+        let storesDB = []; let productsDB = []; let bannersDB = []; let cart = []; let currentCategoryProducts = [];
         
         const getStoreById = (id) => storesDB.find(s => s.id === id);
         const getStoreBySlug = (slug) => storesDB.find(s => s.slug === slug);
         const getProductById = (id) => productsDB.find(p => p.id === id);
+        const getProductBySlug = (sId, pSlug) => productsDB.find(p => p.storeId === sId && p.slug === pSlug);
         const formatMoney = (a) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(a);
         const isLoggedIn = () => sessionStorage.getItem('auth_store') !== null;
         const getAuthStore = () => JSON.parse(sessionStorage.getItem('auth_store'));
 
         // ==========================================
-        // 2. FETCH SEGURO Y CARGA DE DATOS
+        // 2. CARGA DE DATOS
         // ==========================================
         const fetchInitialData = async () => {
             try {
@@ -340,7 +276,7 @@
                 const result = await response.json();
                 if(result.status === 'success') { storesDB = result.data.tiendas || []; productsDB = result.data.productos || []; bannersDB = result.data.banners || []; }
             } catch (e) {
-                console.warn("Aviso: Modo local. Base de datos vacía.");
+                console.warn("Fallo de conexión a Google.");
                 if(storesDB.length === 0) { storesDB = []; productsDB = []; }
             } finally {
                 document.getElementById('global-loader').style.opacity = '0';
@@ -353,28 +289,51 @@
             try {
                 const r = await fetch(APPS_SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload), redirect: 'follow' });
                 return await r.json();
-            } catch (e) { return { status: 'error', message: 'Error de red. Verifica conexión.' }; }
+            } catch (e) { return { status: 'error', message: 'Error de red.' }; }
         };
 
         // ==========================================
-        // 3. RENDERIZADO DE COMPONENTES DE UI
+        // 3. UI: CARDS COMPACTAS PARA MÓVIL
         // ==========================================
+        // Solución a las tarjetas cortadas: Se utiliza "ring" en vez de "border" y anchos más pequeños (w-40 sm:w-52).
         const createProductCardHTML = (p, s, isCarousel = false) => {
             const layoutClasses = isCarousel ? "flex-none w-44 sm:w-52 snap-start" : "w-full";
-            const highlightClasses = p.isHighlighted ? "border-2 border-yellow-400 shadow-yellow-100 shadow-lg" : "border border-gray-100 shadow-sm";
+            const highlightClasses = p.isHighlighted ? "ring-2 ring-yellow-400 ring-inset shadow-yellow-100 shadow-lg" : "border border-gray-100 shadow-sm";
             return `
-            <div class="product-card bg-white rounded-3xl ${highlightClasses} ${layoutClasses} overflow-hidden flex flex-col cursor-pointer" onclick="window.location.hash='#/${s.slug}/${p.slug}'">
-                <div class="h-36 sm:h-40 w-full bg-gray-100 relative"><img src="${p.image}" class="w-full h-full object-cover"></div>
-                <div class="p-3 sm:p-4 flex flex-col flex-1">
-                    <div class="text-[10px] sm:text-xs text-brand-600 font-bold mb-1 truncate hover:underline" onclick="event.stopPropagation(); window.location.hash='#/${s.slug}'"><i class="ph-fill ph-storefront"></i> ${s.name}</div>
+            <div class="product-card bg-white rounded-[1.25rem] ${highlightClasses} ${layoutClasses} overflow-hidden flex flex-col cursor-pointer" onclick="window.location.hash='#/${s.slug}/${p.slug}'">
+                <div class="h-36 sm:h-44 w-full bg-gray-100 relative"><img src="${p.image}" class="w-full h-full object-cover"></div>
+                <div class="p-3.5 flex flex-col flex-1">
+                    <div class="text-[10px] text-brand-600 font-bold mb-1 truncate hover:underline" onclick="event.stopPropagation(); window.location.hash='#/${s.slug}'"><i class="ph-fill ph-storefront"></i> ${s.name}</div>
                     <h3 class="text-sm sm:text-base font-extrabold text-gray-900 mb-2 flex-1 leading-tight line-clamp-2">${p.name}</h3>
                     <div class="flex justify-between items-center">
-                        <span class="text-lg sm:text-xl font-black text-gray-900">${formatMoney(p.price)}</span>
-                        <button onclick="event.stopPropagation(); addToCart('${p.id}')" class="bg-gray-50 text-gray-600 hover:bg-brand-600 hover:text-white p-2 sm:p-2.5 rounded-xl transition-colors shadow-sm"><i class="ph-bold ph-plus text-base sm:text-lg"></i></button>
+                        <span class="text-base sm:text-xl font-black text-gray-900">${formatMoney(p.price)}</span>
+                        <button onclick="event.stopPropagation(); addToCart('${p.id}')" class="bg-gray-50 text-gray-600 hover:bg-brand-600 hover:text-white p-2 rounded-xl transition-colors shadow-sm"><i class="ph-bold ph-plus text-base"></i></button>
                     </div>
                 </div>
             </div>`;
         };
+
+        // ==========================================
+        // 4. RUTAS (SLUGS AMIGABLES)
+        // ==========================================
+        const router = () => {
+            const path = (window.location.hash || '#/').replace('#/', ''); const parts = path.split('/').filter(p => p !== '');
+            const nav = document.getElementById('main-nav');
+            if(['login', 'panel', 'registro-vendedor'].includes(path)) nav.classList.add('hidden'); else nav.classList.remove('hidden');
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active')); window.scrollTo(0, 0);
+
+            if (path === '') { renderHome(); document.getElementById('view-home').classList.add('active'); } 
+            else if (path === 'registro-vendedor') { document.getElementById('register-category').innerHTML = '<option disabled selected value="">Giro...</option>' + categoriesDB.map(c => `<option value="${c.id}">${c.name}</option>`).join(''); document.getElementById('view-register').classList.add('active'); } 
+            else if (path === 'login') { isLoggedIn() ? window.location.hash = '#/panel' : document.getElementById('view-login').classList.add('active'); }
+            else if (path === 'panel') { if (!isLoggedIn()) return window.location.hash = '#/login'; renderPanel(); document.getElementById('view-panel').classList.add('active'); }
+            else if (parts[0] === 'categoria' && parts[1]) { renderCategoryView(parts[1]); } 
+            
+            // RUTAS ESTÉTICAS REPARADAS: #/nombre-tienda/nombre-producto
+            else if (parts.length === 1 && getStoreBySlug(parts[0])) { renderStoreProfile(parts[0]); } 
+            else if (parts.length === 2 && getStoreBySlug(parts[0])) { renderProductDetail(parts[0], parts[1]); } 
+            else { window.location.hash = '#/'; }
+        };
+        window.addEventListener('hashchange', router);
 
         const renderHome = () => {
             document.getElementById('ad-banners').innerHTML = bannersDB.map((b, i) => `<div class="snap-center shrink-0 w-full relative cursor-pointer" onclick="window.location.hash='#/${getStoreById(b.storeId)?.slug || ''}'"><img src="${b.imageUrl}" class="w-full h-full object-cover"></div>`).join('');
@@ -388,20 +347,18 @@
             let dHTML = '', cHTML = '';
             productsDB.forEach(p => {
                 const s = getStoreById(p.storeId); if (!s) return;
-                const cCardGrid = createProductCardHTML(p, s, false);
-                const cCardCarousel = createProductCardHTML(p, s, true);
-                if(p.isHighlighted) dHTML += cCardCarousel;
-                cHTML += cCardGrid;
+                const cardGrid = createProductCardHTML(p, s, false);
+                const cardCarousel = createProductCardHTML(p, s, true);
+                p.isHighlighted ? dHTML += cardCarousel : null; cHTML += cardGrid;
             });
-            document.getElementById('destacados-container').innerHTML = dHTML || '<p class="text-gray-400 text-sm ml-2 font-medium">Aún no hay productos destacados en el pueblo.</p>'; 
-            document.getElementById('catalogo-container').innerHTML = cHTML || '<div class="col-span-full text-center text-gray-400 font-bold py-10">Catálogo vacío. Sé el primero en publicar.</div>';
+            document.getElementById('destacados-container').innerHTML = dHTML || '<p class="text-gray-400 text-sm ml-2 font-medium">Aún no hay productos destacados.</p>'; 
+            document.getElementById('catalogo-container').innerHTML = cHTML || '<div class="col-span-full text-center text-gray-400 font-bold py-10">Catálogo vacío.</div>';
         };
 
         const renderProductDetail = (sSlug, pSlug) => { 
             const s = getStoreBySlug(sSlug); if(!s) return window.location.hash='#/'; 
-            const p = productsDB.find(prod => prod.slug === pSlug && prod.storeId === s.id); if(!p) return window.location.hash='#/'; 
-            
-            document.getElementById('product-detail-container').innerHTML = `<div class="bg-white rounded-[2rem] shadow-2xl shadow-gray-200/50 flex flex-col md:flex-row overflow-hidden border border-gray-100"><img src="${p.image}" class="md:w-1/2 h-[350px] md:h-[500px] object-cover"><div class="p-8 md:p-12 md:w-1/2 flex flex-col"><a href="#/${s.slug}" class="text-brand-700 font-bold mb-4 inline-flex text-xs uppercase tracking-wider bg-brand-50 w-fit px-4 py-1.5 rounded-full hover:bg-brand-100 transition-colors"><i class="ph-fill ph-storefront mr-1.5 text-base"></i> Visitar ${s.name}</a><h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">${p.name}</h1><p class="text-3xl sm:text-4xl font-black text-brand-600 mb-8">${formatMoney(p.price)}</p><div class="h-px w-full bg-gray-100 mb-8"></div><p class="text-gray-500 mb-8 font-medium leading-relaxed">${p.description}</p><button onclick="addToCart('${p.id}', true)" class="mt-auto w-full bg-brand-600 hover:bg-brand-700 transition-colors text-white font-black py-4 px-6 rounded-2xl shadow-lg shadow-brand-500/30 flex items-center justify-center gap-3 text-lg"><i class="ph-bold ph-shopping-cart text-2xl"></i> Agregar al carrito</button></div></div>`; 
+            const p = getProductBySlug(s.id, pSlug); if(!p) return window.location.hash='#/'; 
+            document.getElementById('product-detail-container').innerHTML = `<div class="bg-white rounded-[2rem] shadow-2xl shadow-gray-200/50 flex flex-col md:flex-row overflow-hidden border border-gray-100"><img src="${p.image}" class="md:w-1/2 h-[350px] md:h-[500px] object-cover"><div class="p-8 md:p-12 md:w-1/2 flex flex-col"><a href="#/${s.slug}" class="text-brand-700 font-bold mb-4 inline-flex text-xs uppercase tracking-wider bg-brand-50 w-fit px-4 py-1.5 rounded-full hover:bg-brand-100 transition-colors"><i class="ph-fill ph-storefront mr-1.5 text-base"></i> Visitar ${s.name}</a><h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">${p.name}</h1><p class="text-3xl sm:text-4xl font-black text-brand-600 mb-8">${formatMoney(p.price)}</p><div class="h-px w-full bg-gray-100 mb-8"></div><p class="text-gray-500 mb-8 font-medium leading-relaxed">${p.description}</p><button onclick="addToCart('${p.id}', true)" class="mt-auto w-full bg-brand-600 hover:bg-brand-700 text-white font-black py-4 px-6 rounded-2xl shadow-lg shadow-brand-500/30 flex items-center justify-center gap-3 text-lg"><i class="ph-bold ph-shopping-cart text-2xl"></i> Agregar al carrito</button></div></div>`; 
             document.getElementById('view-product').classList.add('active'); 
         };
         
@@ -417,62 +374,34 @@
         const renderFilteredProducts = (pr) => { document.getElementById('category-products-container').innerHTML = pr.length ? pr.map(p => createProductCardHTML(p, getStoreById(p.storeId), false)).join('') : '<div class="col-span-full py-16 text-center text-gray-400 font-bold"><i class="ph-thin ph-magnifying-glass text-5xl mb-2"></i><p>Sin resultados</p></div>'; };
 
         // ==========================================
-        // 4. RUTAS (SPA)
-        // ==========================================
-        const router = () => {
-            const path = (window.location.hash || '#/').replace('#/', ''); const parts = path.split('/').filter(p => p !== '');
-            const nav = document.getElementById('main-nav');
-            if(['login', 'panel', 'registro-vendedor', 'terminos', 'privacidad'].includes(path)) nav.classList.add('hidden'); else nav.classList.remove('hidden');
-            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active')); window.scrollTo(0, 0);
-
-            if (path === '') { renderHome(); document.getElementById('view-home').classList.add('active'); } 
-            else if (path === 'registro-vendedor') { document.getElementById('register-category').innerHTML = '<option disabled selected value="">Selecciona tu giro principal...</option>' + categoriesDB.map(c => `<option value="${c.id}">${c.name}</option>`).join(''); document.getElementById('view-register').classList.add('active'); } 
-            else if (path === 'login') { isLoggedIn() ? window.location.hash = '#/panel' : document.getElementById('view-login').classList.add('active'); }
-            else if (path === 'panel') { if (!isLoggedIn()) return window.location.hash = '#/login'; renderPanel(); document.getElementById('view-panel').classList.add('active'); }
-            else if (path === 'recuperar-password') { document.getElementById('view-forgot-password').classList.add('active'); }
-            else if (path === 'terminos') { document.getElementById('view-terms').classList.add('active'); nav.classList.remove('hidden'); }
-            else if (path === 'privacidad') { document.getElementById('view-privacy').classList.add('active'); nav.classList.remove('hidden'); }
-            else if (parts[0] === 'categoria' && parts[1]) { renderCategoryView(parts[1]); } 
-            
-            // RUTAS ESTÉTICAS: #/slug-tienda/slug-producto
-            else if (parts.length === 1 && getStoreBySlug(parts[0])) { renderStoreProfile(parts[0]); } 
-            else if (parts.length === 2 && getStoreBySlug(parts[0])) { renderProductDetail(parts[0], parts[1]); } 
-            else { window.location.hash = '#/'; }
-        };
-        window.addEventListener('hashchange', router);
-
-        // ==========================================
         // 5. PANEL VENDEDOR Y MONETIZACIÓN
         // ==========================================
         const renderPanel = () => {
             const store = getAuthStore(); if (!store) return handleLogout();
             document.getElementById('panel-store-name').innerText = store.name;
-            const creds = document.getElementById('panel-credits'); creds.innerText = store.saldo_total;
+            document.getElementById('panel-credits').innerText = store.saldo_total;
             const credStat = document.getElementById('panel-credits-status');
-            if(store.saldo_total <= 5) { creds.classList.add('text-red-500'); credStat.innerHTML=`<span class="text-red-400 font-bold">⚠️ Créditos bajos, recarga pronto.</span>`; } else { creds.classList.remove('text-red-500'); credStat.innerHTML=`<span class="text-gray-400">Suficiente para ${store.saldo_total} acciones/pedidos.</span>`; }
+            if(store.saldo_total <= 5) { credStat.innerHTML=`<span class="text-red-500 font-bold">⚠️ Créditos bajos.</span>`; } else { credStat.innerHTML=`<span class="text-gray-400">Saldo OK.</span>`; }
             
             const sp = productsDB.filter(p => p.storeId === store.id);
             document.getElementById('panel-product-count').innerText = sp.length;
             document.getElementById('panel-products-list').innerHTML = sp.length ? sp.map(p => `
                 <div class="px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-5 hover:bg-gray-50 transition-colors">
                     <img src="${p.image}" class="w-20 h-20 rounded-2xl object-cover border border-gray-200 shadow-sm">
-                    <div class="flex-1 min-w-0"><p class="text-base font-extrabold text-gray-900 truncate">${p.name}</p><p class="text-xs font-medium text-gray-500 truncate mt-1">${p.description}</p><p class="font-black text-brand-600 mt-2">${formatMoney(p.price)}</p></div>
+                    <div class="flex-1 min-w-0"><p class="text-base font-extrabold text-gray-900 truncate">${p.name}</p><p class="font-black text-brand-600 mt-1">${formatMoney(p.price)}</p></div>
                     <div class="flex gap-2">
-                        <button onclick="handleHighlightProduct('${p.id}')" class="${p.isHighlighted ? 'bg-yellow-100 text-yellow-600 opacity-50 cursor-not-allowed' : 'bg-yellow-50 text-yellow-600 hover:bg-yellow-500 hover:text-white'} p-3 rounded-xl transition-colors shadow-sm" title="Destacar en Inicio (10 Créditos)" ${p.isHighlighted ? 'disabled' : ''}><i class="ph-bold ph-star text-xl"></i></button>
-                        <button onclick="openEditModal('${p.id}')" class="bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white p-3 rounded-xl transition-colors shadow-sm" title="Editar"><i class="ph-bold ph-pencil-simple text-xl"></i></button>
+                        <button onclick="handleHighlightProduct('${p.id}')" class="${p.isHighlighted ? 'bg-yellow-100 text-yellow-600 opacity-50' : 'bg-yellow-50 text-yellow-600 hover:bg-yellow-500 hover:text-white'} p-3 rounded-xl transition-colors shadow-sm" title="Destacar (10 Créditos)" ${p.isHighlighted ? 'disabled' : ''}><i class="ph-bold ph-star text-xl"></i></button>
                         <button onclick="handleDeleteProduct('${p.id}')" class="bg-red-50 text-red-600 hover:bg-red-600 hover:text-white p-3 rounded-xl transition-colors shadow-sm" title="Eliminar"><i class="ph-bold ph-trash text-xl"></i></button>
                     </div>
                 </div>
-            `).join('') : '<div class="p-10 text-center text-gray-400 font-bold"><i class="ph-thin ph-package text-5xl mb-2"></i><p>No tienes productos publicados.</p></div>';
+            `).join('') : '<div class="p-10 text-center text-gray-400 font-bold"><i class="ph-thin ph-package text-5xl mb-2"></i><p>No tienes productos.</p></div>';
         };
 
         const handleAddProduct = async (e) => {
             e.preventDefault();
             const file = document.getElementById('new-prod-image-file').files[0];
-            
-            // VALIDACIÓN ESTRICTA DE IMAGEN JPG/JPEG
             if(!file) { showToast("Falta la foto."); return; }
-            if(file.type !== "image/jpeg" && file.type !== "image/jpg") { showToast("Error: La imagen debe ser obligatoriamente formato JPG o JPEG."); return; }
+            if(file.type !== "image/jpeg" && file.type !== "image/jpg") { showToast("Error: La imagen debe ser obligatoriamente JPG o JPEG."); return; }
 
             const btn = document.getElementById('btn-add-prod'); btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Subiendo...'; btn.disabled = true;
 
@@ -486,60 +415,42 @@
             reader.readAsDataURL(file);
         };
 
-        // --- MONETIZACIÓN: DESTACAR PRODUCTO (10 CRÉDITOS) ---
         const handleHighlightProduct = async (pId) => {
             const store = getAuthStore();
-            if(store.saldo_total < 10) { showToast("Necesitas al menos 10 créditos para destacar un producto."); return; }
-            if(!confirm("Destacar este producto te costará 10 créditos. Aparecerá en la página principal. ¿Deseas continuar?")) return;
+            if(store.saldo_total < 10) { showToast("Necesitas al menos 10 créditos para destacar."); return; }
+            if(!confirm("Destacar este producto te costará 10 créditos. ¿Deseas continuar?")) return;
             
             showToast("Procesando pago...");
             const res = await postToAppsScript({ action: 'highlightProduct', storeId: store.id, productId: pId });
-            if(res.status === 'success') {
-                showToast("¡Producto destacado con éxito!");
-                store.saldo_total -= 10;
-                sessionStorage.setItem('auth_store', JSON.stringify(store));
-                await fetchInitialData();
-            } else { showToast(res.message || "Error al destacar producto"); }
+            if(res.status === 'success') { store.saldo_total -= 10; sessionStorage.setItem('auth_store', JSON.stringify(store)); await fetchInitialData(); showToast("¡Producto destacado!"); } else { showToast("Error al procesar."); }
         };
 
-        // --- MONETIZACIÓN: SOLICITAR BANNER (50 CRÉDITOS) ---
         const handleRequestBanner = async () => {
             const store = getAuthStore();
-            if(store.saldo_total < 50) { showToast("Necesitas 50 créditos para solicitar un banner."); return; }
-            if(!confirm("Esto descontará 50 créditos de tu saldo y te redirigirá a nuestro WhatsApp para enviarnos la imagen de tu banner. ¿Continuar?")) return;
+            if(store.saldo_total < 50) { showToast("Necesitas 50 créditos para un banner."); return; }
+            if(!confirm("Esto descontará 50 créditos de tu saldo y abrirá WhatsApp para enviarnos la imagen. ¿Continuar?")) return;
             
-            showToast("Procesando pago...");
+            showToast("Procesando...");
             const res = await postToAppsScript({ action: 'requestBanner', storeId: store.id });
             if(res.status === 'success') {
-                store.saldo_total -= 50;
-                sessionStorage.setItem('auth_store', JSON.stringify(store));
-                await fetchInitialData();
-                showToast("Créditos descontados. Abriendo WhatsApp...");
-                const msg = `Hola administrador. Soy la tienda *${store.name}*. Acabo de pagar 50 créditos para un Banner en la página principal. Aquí te envío la imagen que quiero que suban y la promoción:`;
+                store.saldo_total -= 50; sessionStorage.setItem('auth_store', JSON.stringify(store)); await fetchInitialData();
+                const msg = `Hola administrador. Soy la tienda *${store.name}*. Acabo de pagar 50 créditos para un Banner. Aquí te envío la imagen que quiero subir:`;
                 window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-            } else { showToast(res.message || "Error procesando el cobro"); }
+            } else { showToast("Error procesando el cobro"); }
         };
 
-        // CRUD Edit & Delete
-        const openEditModal = (pId) => { const p = getProductById(pId); if(!p) return; document.getElementById('edit-prod-id').value = p.id; document.getElementById('edit-prod-name').value = p.name; document.getElementById('edit-prod-price').value = p.price; document.getElementById('edit-prod-desc').value = p.description; document.getElementById('modal-edit-product').classList.remove('hidden'); };
-        const closeEditModal = () => document.getElementById('modal-edit-product').classList.add('hidden');
-        const saveEditProduct = async () => { const btn = document.getElementById('btn-save-edit'); btn.innerText = "Guardando..."; btn.disabled = true; const payload = { action: 'editProduct', storeId: getAuthStore().id, productId: document.getElementById('edit-prod-id').value, name: document.getElementById('edit-prod-name').value, price: document.getElementById('edit-prod-price').value, description: document.getElementById('edit-prod-desc').value }; const res = await postToAppsScript(payload); if(res.status === 'success') { showToast("Producto actualizado."); closeEditModal(); await fetchInitialData(); } else { showToast("Error al actualizar."); } btn.innerText = "Guardar Cambios"; btn.disabled = false; };
-        const handleDeleteProduct = async (pId) => { if(!confirm("¿Seguro que deseas eliminar este producto?")) return; showToast("Eliminando..."); const res = await postToAppsScript({ action: 'deleteProduct', storeId: getAuthStore().id, productId: pId }); if(res.status === 'success') { showToast("Producto eliminado."); await fetchInitialData(); } else { showToast("Error al eliminar."); } };
-        const handleDeleteStore = async () => { const code = prompt("ZONA DE PELIGRO: Escribe ELIMINAR para confirmar"); if(code !== 'ELIMINAR') { showToast("Cancelado."); return; } showToast("Eliminando..."); const res = await postToAppsScript({ action: 'deleteStore', storeId: getAuthStore().id }); if(res.status === 'success') { showToast("Tienda eliminada."); handleLogout(); } else { showToast("Error."); } };
+        const handleDeleteProduct = async (pId) => { if(!confirm("¿Seguro que deseas eliminar este producto?")) return; showToast("Eliminando..."); const res = await postToAppsScript({ action: 'deleteProduct', storeId: getAuthStore().id, productId: pId }); if(res.status === 'success') { showToast("Producto eliminado."); await fetchInitialData(); } };
+        const handleDeleteStore = async () => { const code = prompt("ZONA DE PELIGRO: Escribe ELIMINAR para confirmar"); if(code !== 'ELIMINAR') return; const res = await postToAppsScript({ action: 'deleteStore', storeId: getAuthStore().id }); if(res.status === 'success') { handleLogout(); } };
 
         // ==========================================
-        // 6. AUTENTICACIÓN
+        // 6. AUTENTICACIÓN Y EXTRAS
         // ==========================================
         const updateNavAuthStatus = () => { const c = document.getElementById('auth-nav-container'); isLoggedIn() ? c.innerHTML = `<a href="#/panel" class="text-sm font-extrabold text-white bg-gray-900 px-4 py-2.5 rounded-xl flex items-center gap-1.5 shadow-md"><i class="ph-bold ph-user-circle text-lg"></i> Mi Panel</a>` : c.innerHTML = `<a href="#/login" class="text-sm font-bold text-gray-600 hover:text-brand-600 flex items-center gap-1.5 bg-gray-50 px-4 py-2.5 rounded-xl"><i class="ph-bold ph-storefront text-lg"></i> Vender</a>`; };
-        const handleLogin = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-login'); btn.innerText = "Verificando..."; btn.disabled = true; const res = await postToAppsScript({ action: 'login', email: document.getElementById('login-email').value, password: document.getElementById('login-password').value }); if (res.status === 'success') { document.getElementById('login-error').classList.add('hidden'); sessionStorage.setItem('auth_store', JSON.stringify(res.store)); showToast("¡Sesión iniciada!"); window.location.hash = '#/panel'; } else { const err = document.getElementById('login-error'); err.innerText = "Error al iniciar sesión."; err.classList.remove('hidden'); } btn.innerText = "Iniciar Sesión"; btn.disabled = false; };
-        const handleRegistration = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-register'); btn.innerText = 'Creando tienda...'; btn.disabled = true; const payload = { action: 'registerStore', name: document.getElementById('reg-name').value, categoryId: document.getElementById('register-category').value, responsable: document.getElementById('reg-resp').value, phone: document.getElementById('reg-phone').value, email: document.getElementById('reg-email').value, password: document.getElementById('reg-pass').value }; const res = await postToAppsScript(payload); if(res.status === 'success') { showToast("¡Tienda registrada! Inicia sesión."); e.target.reset(); window.location.hash = '#/login'; } else { showToast("Error al registrar."); } btn.innerText = 'Registrar y Obtener Panel'; btn.disabled = false; };
+        const handleLogin = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-login'); btn.innerText = "Verificando..."; btn.disabled = true; const res = await postToAppsScript({ action: 'login', email: document.getElementById('login-email').value, password: document.getElementById('login-password').value }); if (res.status === 'success') { document.getElementById('login-error').classList.add('hidden'); sessionStorage.setItem('auth_store', JSON.stringify(res.store)); window.location.hash = '#/panel'; } else { const err = document.getElementById('login-error'); err.innerText = "Error al iniciar sesión."; err.classList.remove('hidden'); } btn.innerText = "Iniciar Sesión"; btn.disabled = false; };
+        const handleRegistration = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-register'); btn.innerText = 'Creando tienda...'; btn.disabled = true; const payload = { action: 'registerStore', name: document.getElementById('reg-name').value, categoryId: document.getElementById('register-category').value, responsable: document.getElementById('reg-resp').value, phone: document.getElementById('reg-phone').value, email: document.getElementById('reg-email').value, password: document.getElementById('reg-pass').value }; const res = await postToAppsScript(payload); if(res.status === 'success') { showToast("¡Tienda registrada! Inicia sesión."); e.target.reset(); window.location.hash = '#/login'; } btn.innerText = 'Registrar y Obtener Panel'; btn.disabled = false; };
         const handleLogout = () => { sessionStorage.removeItem('auth_store'); updateNavAuthStatus(); window.location.hash = '#/login'; showToast("Sesión cerrada."); };
-        const requestResetToken = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-req-token'); btn.innerText = "Generando..."; btn.disabled = true; resetEmailTemporal = document.getElementById('reset-email').value; const res = await postToAppsScript({ action: 'requestResetToken', email: resetEmailTemporal }); if (res.status === 'success') { document.getElementById('token-display').innerText = res.token; document.getElementById('form-req-token').classList.add('hidden'); document.getElementById('reset-desc').innerText = "Ingresa el token que apareció y tu nueva contraseña."; document.getElementById('form-validate-token').classList.remove('hidden'); } else { showToast(res.message || "Error al solicitar token."); } btn.innerText = "Generar Token"; btn.disabled = false; };
-        const confirmPasswordReset = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-confirm-reset'); btn.innerText = "Actualizando..."; btn.disabled = true; const res = await postToAppsScript({ action: 'resetPassword', email: resetEmailTemporal, token: document.getElementById('reset-token-input').value, newPassword: document.getElementById('reset-new-password').value }); if (res.status === 'success') { showToast("¡Contraseña actualizada!"); window.location.hash = '#/login'; document.getElementById('form-req-token').reset(); document.getElementById('form-validate-token').reset(); document.getElementById('form-req-token').classList.remove('hidden'); document.getElementById('form-validate-token').classList.add('hidden'); } else { showToast(res.message || "Token inválido."); } btn.innerText = "Guardar Nueva Contraseña"; btn.disabled = false; };
-
-        // ==========================================
-        // 7. CARRITO DE COMPRAS
-        // ==========================================
+        
+        // CARRITO
         const addToCart = (id, open = false) => { const p = productsDB.find(p => p.id === id), i = cart.find(i => i.product.id === id); i ? i.quantity++ : cart.push({ product: p, quantity: 1 }); updateCartUI(); showToast(`Agregado: ${p.name}`); if(open && document.getElementById('cart-sidebar').classList.contains('translate-x-full')) toggleCart(); };
         const updateQuantity = (id, d) => { const i = cart.find(i => i.product.id === id); if(i) { i.quantity += d; if(i.quantity <= 0) cart = cart.filter(i => i.product.id !== id); updateCartUI(); } };
         const updateCartUI = () => { const t = cart.reduce((s, i) => s + i.quantity, 0), b = document.getElementById('cart-badge'); b.innerText = t; t > 0 ? b.classList.remove('hidden') : b.classList.add('hidden'); if(cart.length === 0) { document.getElementById('cart-items-container').innerHTML = '<div class="h-full flex flex-col items-center justify-center opacity-50"><i class="ph-thin ph-shopping-cart text-6xl mb-2"></i><p class="font-bold">Carrito vacío</p></div>'; return; } const g = cart.reduce((acc, i) => { const s = getStoreById(i.product.storeId); if(!acc[s.id]) acc[s.id] = { store: s, items: [], total: 0 }; acc[s.id].items.push(i); acc[s.id].total += (i.product.price * i.quantity); return acc; }, {}); document.getElementById('cart-items-container').innerHTML = Object.entries(g).map(([id, d]) => `<div class="bg-white rounded-2xl mb-4 shadow-sm border border-gray-100 overflow-hidden"><div class="bg-gray-50 p-4 border-b border-gray-100 font-extrabold text-sm text-gray-900 flex items-center gap-2"><i class="ph-fill ph-storefront text-brand-600"></i> ${d.store.name}</div><div class="p-5 gap-5 flex flex-col">${d.items.map(i => `<div class="flex gap-4 items-center"><img src="${i.product.image}" class="w-14 h-14 rounded-xl object-cover shadow-sm"><div class="flex-1 min-w-0"><p class="text-sm font-extrabold truncate text-gray-900">${i.product.name}</p><p class="text-brand-600 font-black text-sm">${formatMoney(i.product.price)}</p></div><div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg"><button onclick="updateQuantity('${i.product.id}', -1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">-</button><span class="w-7 text-center text-xs font-black">${i.quantity}</span><button onclick="updateQuantity('${i.product.id}', 1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">+</button></div></div>`).join('')}</div><div class="p-5 border-t border-gray-100"><div class="flex justify-between font-bold mb-4 text-gray-900"><span class="text-gray-500 uppercase tracking-wide text-xs">Subtotal:</span><span class="text-xl">${formatMoney(d.total)}</span></div><button onclick="sendOrder('${id}')" class="w-full bg-[#25D366] hover:bg-[#1da851] text-white font-extrabold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 transition-all transform hover:-translate-y-0.5"><i class="ph-fill ph-whatsapp-logo text-2xl"></i> Pedir por WhatsApp</button></div></div>`).join(''); };

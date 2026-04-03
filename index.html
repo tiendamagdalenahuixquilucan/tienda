@@ -289,13 +289,8 @@
                     bannersDB = result.data.banners || [];
                 }
             } catch (error) {
-                // Modificado para no registrar el error como un fallo crítico en la consola
                 console.warn("Aviso: No se pudo conectar a Google Sheets. Cargando entorno de prueba local. Detalle:", error.message);
-                
-                // Mostrar alerta sutil al usuario
                 setTimeout(() => showToast("Modo de prueba local (Fallo de conexión a Google)"), 1500);
-                
-                // Cargar datos de prueba para no dejar la pantalla en blanco
                 if(storesDB.length === 0) {
                     storesDB = [{ id: 't1', slug: 'demo', name: 'Tienda de Prueba', categoryId: 'comida', phone: '0000000000', saldo_total: 10 }];
                     productsDB = [{ id: 'p1', storeId: 't1', slug: 'error', name: 'Zapatos Deportivos', price: 500, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=400', description: 'Producto de prueba (Sin conexión al servidor).', isHighlighted: true }];
@@ -313,15 +308,13 @@
             try {
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8', 
-                    },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify(payload),
+                    redirect: 'follow'
                 });
                 return await response.json();
             } catch (error) {
                 console.warn("Fallo en la comunicación POST:", error.message);
-                return { status: 'error', message: 'Error de red. Verifica los permisos de Apps Script ("Cualquier persona").' };
+                return { status: 'error', message: 'Bloqueo de red. Verifica que el acceso en Google sea "Cualquier persona".' };
             }
         };
 

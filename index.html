@@ -40,14 +40,12 @@
 </head>
 <body class="bg-gray-50 font-sans text-gray-800 antialiased overflow-x-hidden flex flex-col min-h-screen">
 
-    <!-- Cargador -->
     <div id="global-loader" class="fixed inset-0 bg-white z-[100] flex flex-col items-center justify-center">
         <div class="bg-brand-600 text-white p-4 rounded-2xl mb-6 animate-float shadow-lg shadow-brand-500/30"><i class="ph-bold ph-storefront text-5xl"></i></div>
         <h2 class="text-2xl font-extrabold text-gray-900 tracking-tight">MiPueblo Market</h2>
         <p class="text-sm text-gray-500 mt-2 font-medium">Conectando comercios locales...</p>
     </div>
 
-    <!-- NavBar -->
     <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-gray-100" id="main-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
@@ -57,9 +55,8 @@
                 </a>
                 <div class="hidden md:flex items-center gap-6" id="desktop-nav-categories"></div>
                 <div class="flex items-center gap-3">
-                    <!-- BOTÓN VENDER / MI PANEL VISIBLE EN MÓVIL Y DESKTOP -->
+                    <!-- CONTENEDOR BOTÓN VENDER / PANEL -->
                     <div id="auth-nav-container" class="block"></div>
-                    
                     <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
                     <button onclick="toggleCart()" class="relative p-2 text-gray-700 hover:text-brand-600 bg-gray-100 hover:bg-brand-50 rounded-full transition-colors">
                         <i class="ph-bold ph-shopping-cart text-xl"></i>
@@ -71,7 +68,6 @@
         </div>
     </nav>
 
-    <!-- SPA Router -->
     <main class="flex-1 flex flex-col">
         <!-- VISTA: HOME -->
         <section id="view-home" class="view-section">
@@ -131,7 +127,9 @@
 
         <!-- VISTA: TIENDA -->
         <section id="view-store" class="view-section">
-            <div class="bg-white border-b border-gray-200 mb-8 shadow-sm"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" id="store-header-container"></div></div>
+            <div class="bg-white border-b border-gray-200 mb-8 shadow-sm">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" id="store-header-container"></div>
+            </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
                 <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2"><i class="ph-fill ph-storefront text-brand-600"></i> Catálogo de la tienda</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5" id="store-products-container"></div>
@@ -244,7 +242,7 @@
             <div class="bg-gray-900 text-white pb-24 pt-8">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
                     <div><h1 class="text-2xl font-extrabold" id="panel-store-name">Mi Panel</h1><p class="text-gray-400 text-sm font-medium">Gestiona tu catálogo y saldo</p></div>
-                    <button onclick="handleLogout()" class="text-sm font-bold bg-white/10 hover:bg-red-500 px-4 py-2 rounded-xl transition-all flex items-center gap-2"><i class="ph-bold ph-sign-out"></i> Salir</button>
+                    <button onclick="handleLogout()" class="text-sm font-bold bg-white/10 hover:bg-red-500 px-4 py-2 rounded-xl transition-all flex items-center gap-2"><i class="ph-bold ph-sign-out"></i> <span class="hidden sm:inline">Salir</span></button>
                 </div>
             </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-14">
@@ -287,8 +285,8 @@
                                 <input type="text" id="new-prod-name" required class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Nombre del Producto">
                                 <input type="number" id="new-prod-price" required min="1" class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Precio ($)">
                                 <div class="relative">
-                                    <label class="block text-[10px] font-black text-gray-500 mb-1 uppercase tracking-wider ml-1">Foto (Comprime JPG/PNG automáticamente)</label>
-                                    <input type="file" id="new-prod-image-file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" capture="environment" required class="w-full p-2 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-extrabold file:bg-brand-100 file:text-brand-700 hover:file:bg-brand-200 cursor-pointer">
+                                    <label class="block text-[10px] font-black text-gray-500 mb-1 uppercase tracking-wider ml-1">Foto (Comprime de Galería/Cámara)</label>
+                                    <input type="file" id="new-prod-image-file" accept="image/*" required class="w-full p-2 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-extrabold file:bg-brand-100 file:text-brand-700 hover:file:bg-brand-200 cursor-pointer">
                                 </div>
                                 <textarea id="new-prod-desc" required rows="3" class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Añade una descripción llamativa..."></textarea>
                                 <button type="submit" id="btn-add-prod" class="w-full py-3.5 bg-brand-600 text-white font-extrabold rounded-xl shadow-lg w-full transition-colors">Publicar Producto</button>
@@ -317,18 +315,18 @@
         </div>
     </footer>
 
-    <!-- MODAL EDITAR -->
-    <div id="modal-edit-product" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center fade-in">
-        <div class="bg-white p-8 rounded-3xl w-full max-w-md shadow-2xl m-4 border border-gray-100">
+    <!-- MODAL EDITAR (z-[100] para sobreponerse) -->
+    <div id="modal-edit-product" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center fade-in">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl w-full max-w-md shadow-2xl m-4 border border-gray-100">
             <h3 class="text-xl font-extrabold mb-6 text-gray-900 flex items-center gap-2"><i class="ph-bold ph-pencil-simple text-brand-600"></i> Editar Producto</h3>
             <div class="space-y-4">
                 <input type="hidden" id="edit-prod-id">
                 <div><label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wide">Nombre</label><input type="text" id="edit-prod-name" class="w-full p-3 border border-gray-200 rounded-xl text-sm font-medium bg-gray-50"></div>
                 <div><label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wide">Precio ($)</label><input type="number" id="edit-prod-price" class="w-full p-3 border border-gray-200 rounded-xl text-sm font-medium bg-gray-50"></div>
                 <div><label class="block text-xs font-bold text-gray-500 mb-1 uppercase tracking-wide">Descripción</label><textarea id="edit-prod-desc" rows="3" class="w-full p-3 border border-gray-200 rounded-xl text-sm font-medium bg-gray-50"></textarea></div>
-                <div class="flex gap-3 pt-4">
-                    <button onclick="saveEditProduct()" id="btn-save-edit" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 rounded-xl shadow-lg transition-all">Guardar Cambios</button>
-                    <button onclick="closeEditModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-extrabold py-3 rounded-xl transition-all">Cancelar</button>
+                <div class="flex gap-3 pt-4 flex-col sm:flex-row">
+                    <button onclick="saveEditProduct()" id="btn-save-edit" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 rounded-xl shadow-lg transition-all w-full">Guardar</button>
+                    <button onclick="closeEditModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-extrabold py-3 rounded-xl transition-all w-full mt-2 sm:mt-0">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -347,7 +345,7 @@
         // 1. CONFIGURACIÓN Y NUMERO DE ADMIN
         // ==========================================
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwR6yHGr1ge3_1QHQsAJMoMYcHHCVq0knm9TJed8klXFTuuxLm7m3RFgtJbPODlirtf4Q/exec'; 
-        const ADMIN_WHATSAPP = "525512906477"; // Número validado
+        const ADMIN_WHATSAPP = "525512906477"; // Número verificado
         
         const categoriesDB = [
             { id: 'comida', name: 'Comida', icon: 'ph-hamburger', color: 'text-orange-500', bg: 'bg-orange-100' },
@@ -359,7 +357,7 @@
 
         let storesDB = []; let productsDB = []; let bannersDB = []; let cart = []; let currentCategoryProducts = []; let resetEmailTemporal = '';
         
-        // Validaciones robustas incluyendo búsqueda por ID de respaldo
+        // Búsqueda a prueba de balas (Slug primero, ID como respaldo)
         const getStoreById = (id) => storesDB.find(s => s.id === id);
         const getStoreBySlug = (slug) => storesDB.find(s => s.slug === slug || s.id === slug);
         const getProductById = (id) => productsDB.find(p => p.id === id);
@@ -374,7 +372,8 @@
         // ==========================================
         const fetchInitialData = async () => {
             try {
-                const response = await fetch(APPS_SCRIPT_URL);
+                // Agregar ?t=timestamp fuerza a no guardar cache del navegador
+                const response = await fetch(APPS_SCRIPT_URL + '?t=' + new Date().getTime());
                 const result = await response.json();
                 if(result.status === 'success') { 
                     storesDB = result.data.tiendas || []; 
@@ -383,10 +382,9 @@
                     
                     const todayStr = new Date().toISOString().split('T')[0];
 
+                    // Desactivar destacados caducados en Frontend
                     productsDB = prods.map(p => {
-                        if (p.isHighlighted && p.fechaVencimiento && p.fechaVencimiento < todayStr) {
-                            p.isHighlighted = false;
-                        }
+                        if (p.isHighlighted && p.fechaVencimiento && p.fechaVencimiento < todayStr) { p.isHighlighted = false; }
                         return p;
                     });
                     
@@ -414,7 +412,7 @@
         };
 
         // ==========================================
-        // 3. UI: CARDS COMPACTAS
+        // 3. UI: CARDS Y PREVENCIÓN DE IMAGEN ROTA
         // ==========================================
         const createProductCardHTML = (p, s, isCarousel = false) => {
             const layoutClasses = isCarousel ? "flex-none w-40 sm:w-52 snap-start" : "w-full";
@@ -423,9 +421,10 @@
             const prodPath = p.slug || p.id;
             const urlPath = `#/${storePath}/${prodPath}`;
             
+            // onerror como seguro anti-rotura
             return `
             <div class="product-card bg-white rounded-[1.25rem] ${highlightClasses} ${layoutClasses} overflow-hidden flex flex-col cursor-pointer" onclick="window.location.hash='${urlPath}'">
-                <div class="h-32 sm:h-44 w-full bg-gray-100 relative"><img src="${p.image}" class="w-full h-full object-cover"></div>
+                <div class="h-32 sm:h-44 w-full bg-gray-100 relative"><img src="${p.image}" onerror="this.src='https://placehold.co/400x400?text=Sin+Imagen'" class="w-full h-full object-cover"></div>
                 <div class="p-3.5 flex flex-col flex-1">
                     <div class="text-[10px] text-brand-600 font-bold mb-1 truncate hover:underline" onclick="event.stopPropagation(); window.location.hash='#/${storePath}'"><i class="ph-fill ph-storefront"></i> ${s.name}</div>
                     <h3 class="text-sm sm:text-base font-extrabold text-gray-900 mb-2 flex-1 leading-tight line-clamp-2">${p.name}</h3>
@@ -455,7 +454,7 @@
             else if (path === 'recuperar-password') { document.getElementById('view-forgot-password').classList.add('active'); }
             else if (parts[0] === 'categoria' && parts[1]) { renderCategoryView(parts[1]); } 
             
-            // RUTAS ESTÉTICAS Y ROBUSTAS
+            // RUTAS ESTÉTICAS REPARADAS
             else if (parts.length === 1 && getStoreBySlug(parts[0])) { renderStoreProfile(parts[0]); } 
             else if (parts.length === 2 && getStoreBySlug(parts[0])) { renderProductDetail(parts[0], parts[1]); } 
             else { window.location.hash = '#/'; }
@@ -463,7 +462,7 @@
         window.addEventListener('hashchange', router);
 
         const renderHome = () => {
-            document.getElementById('ad-banners').innerHTML = bannersDB.map((b, i) => `<div class="snap-center shrink-0 w-full relative cursor-pointer" onclick="window.location.hash='#/${getStoreById(b.storeId)?.slug || ''}'"><img src="${b.imageUrl}" class="w-full h-full object-cover"></div>`).join('');
+            document.getElementById('ad-banners').innerHTML = bannersDB.map((b, i) => `<div class="snap-center shrink-0 w-full relative cursor-pointer" onclick="window.location.hash='#/${getStoreById(b.storeId)?.slug || getStoreById(b.storeId)?.id || ''}'"><img src="${b.imageUrl}" onerror="this.src='https://placehold.co/800x400?text=Banner'" class="w-full h-full object-cover"></div>`).join('');
             document.getElementById('banner-dots').innerHTML = bannersDB.map((_, i) => `<div class="carousel-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer shadow-sm" onclick="document.getElementById('ad-banners').scrollTo({left: document.getElementById('ad-banners').clientWidth * ${i}, behavior: 'smooth'})" id="dot-${i}"></div>`).join('');
             if(bannersDB.length) document.getElementById('dot-0')?.classList.add('active');
             
@@ -489,13 +488,14 @@
             const p = getProductBySlug(s.id, pSlugOrId); 
             if(!p) return window.location.hash='#/'; 
             
-            document.getElementById('product-detail-container').innerHTML = `<div class="bg-white rounded-[2rem] shadow-2xl shadow-gray-200/50 flex flex-col md:flex-row overflow-hidden border border-gray-100"><img src="${p.image}" class="md:w-1/2 h-[350px] md:h-[500px] object-cover"><div class="p-8 md:p-12 md:w-1/2 flex flex-col"><a href="#/${s.slug || s.id}" class="text-brand-700 font-bold mb-4 inline-flex text-xs uppercase tracking-wider bg-brand-50 w-fit px-4 py-1.5 rounded-full hover:bg-brand-100 transition-colors"><i class="ph-fill ph-storefront mr-1.5 text-base"></i> Visitar ${s.name}</a><h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">${p.name}</h1><p class="text-3xl sm:text-4xl font-black text-brand-600 mb-8">${formatMoney(p.price)}</p><div class="h-px w-full bg-gray-100 mb-8"></div><p class="text-gray-500 mb-8 font-medium leading-relaxed">${p.description}</p><button onclick="addToCart('${p.id}', true)" class="mt-auto w-full bg-brand-600 hover:bg-brand-700 transition-colors text-white font-black py-4 px-6 rounded-2xl shadow-lg shadow-brand-500/30 flex items-center justify-center gap-3 text-lg"><i class="ph-bold ph-shopping-cart text-2xl"></i> Agregar al carrito</button></div></div>`; 
+            document.getElementById('product-detail-container').innerHTML = `<div class="bg-white rounded-[2rem] shadow-2xl shadow-gray-200/50 flex flex-col md:flex-row overflow-hidden border border-gray-100"><img src="${p.image}" onerror="this.src='https://placehold.co/400x400?text=Sin+Imagen'" class="md:w-1/2 h-[350px] md:h-[500px] object-cover"><div class="p-8 md:p-12 md:w-1/2 flex flex-col"><a href="#/${s.slug || s.id}" class="text-brand-700 font-bold mb-4 inline-flex text-xs uppercase tracking-wider bg-brand-50 w-fit px-4 py-1.5 rounded-full hover:bg-brand-100 transition-colors"><i class="ph-fill ph-storefront mr-1.5 text-base"></i> Visitar ${s.name}</a><h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">${p.name}</h1><p class="text-3xl sm:text-4xl font-black text-brand-600 mb-8">${formatMoney(p.price)}</p><div class="h-px w-full bg-gray-100 mb-8"></div><p class="text-gray-500 mb-8 font-medium leading-relaxed">${p.description}</p><button onclick="addToCart('${p.id}', true)" class="mt-auto w-full bg-brand-600 hover:bg-brand-700 transition-colors text-white font-black py-4 px-6 rounded-2xl shadow-lg shadow-brand-500/30 flex items-center justify-center gap-3 text-lg"><i class="ph-bold ph-shopping-cart text-2xl"></i> Agregar al carrito</button></div></div>`; 
             document.getElementById('view-product').classList.add('active'); 
         };
         
         const renderStoreProfile = (sSlug) => { 
             const s = getStoreBySlug(sSlug); if(!s) return window.location.hash='#/'; 
-            document.getElementById('store-header-container').innerHTML = `<div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left"><div class="w-24 h-24 bg-gradient-to-br from-brand-100 to-brand-200 text-brand-600 rounded-3xl shadow-inner flex justify-center items-center text-4xl"><i class="ph-fill ph-storefront"></i></div><div><h1 class="text-4xl font-black text-gray-900 mb-2">${s.name}</h1><p class="text-brand-600 font-bold text-sm uppercase tracking-widest"><i class="ph-bold ph-whatsapp-logo"></i> ${s.phone}</p></div></div>`; 
+            
+            document.getElementById('store-header-container').innerHTML = `<div class="mb-6"><a href="#/" class="text-brand-600 hover:text-brand-800 font-bold text-sm inline-flex items-center transition-colors"><i class="ph-bold ph-arrow-left mr-2 text-lg"></i> Volver al inicio</a></div><div class="flex flex-col md:flex-row items-center gap-6 text-center md:text-left"><div class="w-24 h-24 bg-gradient-to-br from-brand-100 to-brand-200 text-brand-600 rounded-3xl shadow-inner flex justify-center items-center text-4xl"><i class="ph-fill ph-storefront"></i></div><div><h1 class="text-4xl font-black text-gray-900 mb-2">${s.name}</h1><p class="text-brand-600 font-bold text-sm uppercase tracking-widest"><i class="ph-bold ph-whatsapp-logo"></i> ${s.phone}</p></div></div>`; 
             document.getElementById('store-products-container').innerHTML = productsDB.filter(p => p.storeId === s.id).map(p => createProductCardHTML(p, s, false)).join(''); 
             document.getElementById('view-store').classList.add('active'); 
         };
@@ -505,7 +505,7 @@
         const renderFilteredProducts = (pr) => { document.getElementById('category-products-container').innerHTML = pr.length ? pr.map(p => createProductCardHTML(p, getStoreById(p.storeId), false)).join('') : '<div class="col-span-full py-16 text-center text-gray-400 font-bold"><i class="ph-thin ph-magnifying-glass text-5xl mb-2"></i><p>Sin resultados</p></div>'; };
 
         // ==========================================
-        // 5. PANEL VENDEDOR E IMÁGENES COMPRIMIDAS
+        // 5. PANEL VENDEDOR Y COMPRESIÓN DE IMÁGENES
         // ==========================================
         const renderPanel = () => {
             const store = getAuthStore(); if (!store) return handleLogout();
@@ -513,16 +513,22 @@
             document.getElementById('panel-credits').innerText = store.saldo_total;
             const credStat = document.getElementById('panel-credits-status');
             
-            if(Number(store.saldo_total) <= 0) { credStat.innerHTML=`<span class="text-red-600 font-black uppercase"><i class="ph-bold ph-warning-circle"></i> Tienda inactiva</span>`; } else if(Number(store.saldo_total) <= 5) { credStat.innerHTML=`<span class="text-red-500 font-bold">⚠️ Créditos bajos.</span>`; } else { credStat.innerHTML=`<span class="text-gray-400">Saldo OK.</span>`; }
+            if(Number(store.saldo_total) <= 0) { credStat.innerHTML=`<span class="text-red-600 font-black uppercase"><i class="ph-bold ph-warning-circle"></i> Tienda inactiva</span>`; } 
+            else if(Number(store.saldo_total) <= 5) { credStat.innerHTML=`<span class="text-red-500 font-bold">⚠️ Créditos bajos.</span>`; } 
+            else { credStat.innerHTML=`<span class="text-gray-400">Saldo OK.</span>`; }
             
             const sp = productsDB.filter(p => p.storeId === store.id);
             document.getElementById('panel-product-count').innerText = sp.length;
+            
             document.getElementById('panel-products-list').innerHTML = sp.length ? sp.map(p => `
                 <div class="px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-5 hover:bg-gray-50 transition-colors">
-                    <img src="${p.image}" class="w-20 h-20 rounded-2xl object-cover border border-gray-200 shadow-sm">
-                    <div class="flex-1 min-w-0"><p class="text-base font-extrabold text-gray-900 truncate">${p.name}</p><p class="font-black text-brand-600 mt-1">${formatMoney(p.price)}</p></div>
-                    <div class="flex gap-2">
+                    <div class="flex items-center gap-4 flex-1 min-w-0">
+                        <img src="${p.image}" onerror="this.src='https://placehold.co/100x100?text=Sin+Imagen'" class="w-20 h-20 rounded-2xl object-cover border border-gray-200 shadow-sm">
+                        <div class="flex-1 min-w-0"><p class="text-base font-extrabold text-gray-900 truncate">${p.name}</p><p class="font-black text-brand-600 mt-1">${formatMoney(p.price)}</p></div>
+                    </div>
+                    <div class="flex gap-2 mt-3 sm:mt-0 justify-end w-full sm:w-auto">
                         <button onclick="handleHighlightProduct('${p.id}')" class="${p.isHighlighted ? 'bg-yellow-100 text-yellow-600 opacity-50' : 'bg-yellow-50 text-yellow-600 hover:bg-yellow-500 hover:text-white'} p-3 rounded-xl transition-colors shadow-sm" title="Destacar (10 Créditos)" ${p.isHighlighted ? 'disabled' : ''}><i class="ph-bold ph-star text-xl"></i></button>
+                        <button onclick="openEditModal('${p.id}')" class="bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white p-3 rounded-xl transition-colors shadow-sm" title="Editar"><i class="ph-bold ph-pencil-simple text-xl"></i></button>
                         <button onclick="handleDeleteProduct('${p.id}')" class="bg-red-50 text-red-600 hover:bg-red-600 hover:text-white p-3 rounded-xl transition-colors shadow-sm" title="Eliminar"><i class="ph-bold ph-trash text-xl"></i></button>
                     </div>
                 </div>
@@ -534,37 +540,27 @@
             const file = document.getElementById('new-prod-image-file').files[0];
             if(!file) { showToast("Falta la foto."); return; }
             
-            // Se permiten JPG y PNG porque el Canvas los convertirá automáticamente.
-            if(!file.type.match(/image\/(jpeg|jpg|png)/i)) { showToast("Error: Sube una imagen válida (JPG o PNG)."); return; }
-
             const btn = document.getElementById('btn-add-prod'); 
             btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Comprimiendo y subiendo...'; 
             btn.disabled = true;
 
-            // SISTEMA AVANZADO DE COMPRESIÓN DE IMÁGENES (Previene roturas en Base64)
+            // SISTEMA AVANZADO DE COMPRESIÓN (Transforma PNG a JPEG y reduce peso)
             const reader = new FileReader();
             reader.onload = (event) => {
                 const img = new Image();
                 img.onload = async () => {
                     const canvas = document.createElement('canvas');
-                    const MAX_WIDTH = 800; // Redimensiona fotos gigantes de celular
-                    const MAX_HEIGHT = 800;
-                    let width = img.width;
-                    let height = img.height;
+                    const MAX_WIDTH = 600; 
+                    let width = img.width; let height = img.height;
 
-                    if (width > height) {
-                        if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
-                    } else {
-                        if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
-                    }
+                    if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } } 
+                    else { if (height > MAX_WIDTH) { width *= MAX_WIDTH / height; height = MAX_WIDTH; } }
 
-                    canvas.width = width;
-                    canvas.height = height;
+                    canvas.width = width; canvas.height = height;
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
 
-                    // Convierte la imagen a un JPG súper ligero para que Sheets no lo rompa
-                    const compressedBase64 = canvas.toDataURL('image/jpeg', 0.8);
+                    const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6); 
 
                     const payload = { action: 'addProduct', storeId: getAuthStore().id, storeName: getAuthStore().name, name: document.getElementById('new-prod-name').value, price: document.getElementById('new-prod-price').value, imageBase64: compressedBase64, description: document.getElementById('new-prod-desc').value };
                     
@@ -589,16 +585,12 @@
             if(!confirm("Destacar este producto costará 10 créditos y durará 5 días. ¿Deseas continuar?")) return;
             
             showToast("Procesando pago...");
-            const expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate() + 5);
+            const expirationDate = new Date(); expirationDate.setDate(expirationDate.getDate() + 5);
             const formattedDate = expirationDate.toISOString().split('T')[0];
 
             const res = await postToAppsScript({ action: 'highlightProduct', storeId: store.id, productId: pId, fechaVencimiento: formattedDate });
             if(res.status === 'success') { 
-                store.saldo_total -= 10; 
-                sessionStorage.setItem('auth_store', JSON.stringify(store)); 
-                await fetchInitialData(); 
-                showToast("¡Producto destacado!"); 
+                store.saldo_total -= 10; sessionStorage.setItem('auth_store', JSON.stringify(store)); await fetchInitialData(); showToast("¡Producto destacado!"); 
             } else { showToast("Error al procesar."); }
         };
 
@@ -608,36 +600,32 @@
             if(!confirm("Esto descontará 50 créditos y tu banner durará 5 días. Se abrirá WhatsApp para enviarnos la imagen. ¿Continuar?")) return;
             
             showToast("Calculando fechas...");
-            const today = new Date();
-            const expDate = new Date();
-            expDate.setDate(expDate.getDate() + 5);
+            const today = new Date(); const expDate = new Date(); expDate.setDate(expDate.getDate() + 5);
 
-            const payload = {
-                action: 'requestBanner',
-                storeId: store.id,
-                fechaSolicitud: today.toISOString().split('T')[0],
-                fechaVencimiento: expDate.toISOString().split('T')[0]
-            };
-
+            const payload = { action: 'requestBanner', storeId: store.id, fechaSolicitud: today.toISOString().split('T')[0], fechaVencimiento: expDate.toISOString().split('T')[0] };
             const res = await postToAppsScript(payload);
             if(res && res.status === 'success') {
-                store.saldo_total -= 50; 
-                sessionStorage.setItem('auth_store', JSON.stringify(store)); 
-                await fetchInitialData();
+                store.saldo_total -= 50; sessionStorage.setItem('auth_store', JSON.stringify(store)); await fetchInitialData();
                 showToast("Redirigiendo a WhatsApp...");
                 const msg = `Hola administrador. Soy la tienda *${store.name}*. Acabo de pagar 50 créditos para un Banner de 5 días. Aquí te envío la imagen que quiero subir:`;
                 window.open(`https://api.whatsapp.com/send?phone=${ADMIN_WHATSAPP}&text=${encodeURIComponent(msg)}`, '_blank');
-            } else { 
-                showToast("Error procesando el cobro"); 
-            }
+            } else { showToast("Error procesando el cobro"); }
         };
 
         const handleDeleteProduct = async (pId) => { if(!confirm("¿Seguro que deseas eliminar este producto?")) return; showToast("Eliminando..."); const res = await postToAppsScript({ action: 'deleteProduct', storeId: getAuthStore().id, productId: pId }); if(res.status === 'success') { showToast("Producto eliminado."); await fetchInitialData(); } };
 
+        const openEditModal = (pId) => { const p = getProductById(pId); if(!p) return; document.getElementById('edit-prod-id').value = p.id; document.getElementById('edit-prod-name').value = p.name; document.getElementById('edit-prod-price').value = p.price; document.getElementById('edit-prod-desc').value = p.description; document.getElementById('modal-edit-product').classList.remove('hidden'); };
+        const closeEditModal = () => document.getElementById('modal-edit-product').classList.add('hidden');
+        const saveEditProduct = async () => { const btn = document.getElementById('btn-save-edit'); btn.innerText = "Guardando..."; btn.disabled = true; const payload = { action: 'editProduct', storeId: getAuthStore().id, productId: document.getElementById('edit-prod-id').value, name: document.getElementById('edit-prod-name').value, price: document.getElementById('edit-prod-price').value, description: document.getElementById('edit-prod-desc').value }; const res = await postToAppsScript(payload); if(res.status === 'success') { showToast("Producto actualizado."); closeEditModal(); await fetchInitialData(); } else { showToast("Error al actualizar."); } btn.innerText = "Guardar"; btn.disabled = false; };
+        const handleDeleteStore = async () => { const code = prompt("ZONA DE PELIGRO: Escribe ELIMINAR para confirmar"); if(code !== 'ELIMINAR') return; const res = await postToAppsScript({ action: 'deleteStore', storeId: getAuthStore().id }); if(res.status === 'success') { handleLogout(); } };
+
         // ==========================================
         // 6. AUTENTICACIÓN
         // ==========================================
-        const updateNavAuthStatus = () => { const c = document.getElementById('auth-nav-container'); isLoggedIn() ? c.innerHTML = `<a href="#/panel" class="text-xs sm:text-sm font-extrabold text-white bg-gray-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl flex items-center gap-1.5 shadow-md transition-colors hover:bg-black"><i class="ph-bold ph-user-circle text-lg"></i> <span class="hidden sm:inline">Mi Panel</span></a>` : c.innerHTML = `<a href="#/login" class="text-xs sm:text-sm font-bold text-gray-600 hover:text-brand-600 flex items-center gap-1.5 bg-gray-50 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-colors"><i class="ph-bold ph-storefront text-lg"></i> <span class="hidden sm:inline">Vender</span></a>`; };
+        const updateNavAuthStatus = () => { 
+            const c = document.getElementById('auth-nav-container'); const store = getAuthStore();
+            isLoggedIn() && store ? c.innerHTML = `<a href="#/panel" class="text-xs sm:text-sm font-extrabold text-white bg-gray-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl flex items-center gap-1.5 shadow-md transition-colors hover:bg-black"><i class="ph-bold ph-storefront text-lg"></i> <span class="hidden sm:inline">${store.name}</span></a>` : c.innerHTML = `<a href="#/login" class="text-xs sm:text-sm font-bold text-gray-600 hover:text-brand-600 flex items-center gap-1.5 bg-gray-50 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-colors"><i class="ph-bold ph-storefront text-lg"></i> <span class="hidden sm:inline">Vender</span></a>`; 
+        };
         const handleLogin = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-login'); btn.innerText = "Verificando..."; btn.disabled = true; const res = await postToAppsScript({ action: 'login', email: document.getElementById('login-email').value, password: document.getElementById('login-password').value }); if (res.status === 'success') { document.getElementById('login-error').classList.add('hidden'); sessionStorage.setItem('auth_store', JSON.stringify(res.store)); window.location.hash = '#/panel'; } else { const err = document.getElementById('login-error'); err.innerText = "Error al iniciar sesión."; err.classList.remove('hidden'); } btn.innerText = "Iniciar Sesión"; btn.disabled = false; };
         const handleRegistration = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-register'); btn.innerText = 'Creando tienda...'; btn.disabled = true; const payload = { action: 'registerStore', name: document.getElementById('reg-name').value, categoryId: document.getElementById('register-category').value, responsable: document.getElementById('reg-resp').value, phone: document.getElementById('reg-phone').value, email: document.getElementById('reg-email').value, password: document.getElementById('reg-pass').value }; const res = await postToAppsScript(payload); if(res.status === 'success') { showToast("¡Tienda registrada! Inicia sesión."); e.target.reset(); window.location.hash = '#/login'; } btn.innerText = 'Registrar y Obtener Panel'; btn.disabled = false; };
         const handleLogout = () => { sessionStorage.removeItem('auth_store'); updateNavAuthStatus(); window.location.hash = '#/login'; showToast("Sesión cerrada."); };
@@ -645,13 +633,12 @@
         const confirmPasswordReset = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-confirm-reset'); btn.innerText = "Actualizando..."; btn.disabled = true; const res = await postToAppsScript({ action: 'resetPassword', email: resetEmailTemporal, token: document.getElementById('reset-token-input').value, newPassword: document.getElementById('reset-new-password').value }); if (res.status === 'success') { showToast("¡Contraseña actualizada!"); window.location.hash = '#/login'; document.getElementById('form-req-token').reset(); document.getElementById('form-validate-token').reset(); document.getElementById('form-req-token').classList.remove('hidden'); document.getElementById('form-validate-token').classList.add('hidden'); } else { showToast(res.message || "Token inválido."); } btn.innerText = "Guardar Nueva Contraseña"; btn.disabled = false; };
 
         // ==========================================
-        // 7. CARRITO DE COMPRAS Y PEDIDOS
+        // 7. CARRITO DE COMPRAS Y WHATSAPP SEGURO
         // ==========================================
         const addToCart = (id, open = false) => { const p = productsDB.find(p => p.id === id), i = cart.find(i => i.product.id === id); i ? i.quantity++ : cart.push({ product: p, quantity: 1 }); updateCartUI(); showToast(`Agregado: ${p.name}`); if(open && document.getElementById('cart-sidebar').classList.contains('translate-x-full')) toggleCart(); };
         const updateQuantity = (id, d) => { const i = cart.find(i => i.product.id === id); if(i) { i.quantity += d; if(i.quantity <= 0) cart = cart.filter(i => i.product.id !== id); updateCartUI(); } };
-        const updateCartUI = () => { const t = cart.reduce((s, i) => s + i.quantity, 0), b = document.getElementById('cart-badge'); b.innerText = t; t > 0 ? b.classList.remove('hidden') : b.classList.add('hidden'); if(cart.length === 0) { document.getElementById('cart-items-container').innerHTML = '<div class="h-full flex flex-col items-center justify-center opacity-50"><i class="ph-thin ph-shopping-cart text-6xl mb-2"></i><p class="font-bold">Carrito vacío</p></div>'; return; } const g = cart.reduce((acc, i) => { const s = getStoreById(i.product.storeId); if(!acc[s.id]) acc[s.id] = { store: s, items: [], total: 0 }; acc[s.id].items.push(i); acc[s.id].total += (i.product.price * i.quantity); return acc; }, {}); document.getElementById('cart-items-container').innerHTML = Object.entries(g).map(([id, d]) => `<div class="bg-white rounded-2xl mb-4 shadow-sm border border-gray-100 overflow-hidden"><div class="bg-gray-50 p-4 border-b border-gray-100 font-extrabold text-sm text-gray-900 flex items-center gap-2"><i class="ph-fill ph-storefront text-brand-600"></i> ${d.store.name}</div><div class="p-5 gap-5 flex flex-col">${d.items.map(i => `<div class="flex gap-4 items-center"><img src="${i.product.image}" class="w-14 h-14 rounded-xl object-cover shadow-sm"><div class="flex-1 min-w-0"><p class="text-sm font-extrabold truncate text-gray-900">${i.product.name}</p><p class="text-brand-600 font-black text-sm">${formatMoney(i.product.price)}</p></div><div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg"><button onclick="updateQuantity('${i.product.id}', -1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">-</button><span class="w-7 text-center text-xs font-black">${i.quantity}</span><button onclick="updateQuantity('${i.product.id}', 1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">+</button></div></div>`).join('')}</div><div class="p-5 border-t border-gray-100"><div class="flex justify-between font-bold mb-4 text-gray-900"><span class="text-gray-500 uppercase tracking-wide text-xs">Subtotal:</span><span class="text-xl">${formatMoney(d.total)}</span></div><button onclick="sendOrder('${id}')" class="w-full bg-[#25D366] hover:bg-[#1da851] text-white font-extrabold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 transition-all transform hover:-translate-y-0.5"><i class="ph-fill ph-whatsapp-logo text-2xl"></i> Pedir por WhatsApp</button></div></div>`).join(''); };
+        const updateCartUI = () => { const t = cart.reduce((s, i) => s + i.quantity, 0), b = document.getElementById('cart-badge'); b.innerText = t; t > 0 ? b.classList.remove('hidden') : b.classList.add('hidden'); if(cart.length === 0) { document.getElementById('cart-items-container').innerHTML = '<div class="h-full flex flex-col items-center justify-center opacity-50"><i class="ph-thin ph-shopping-cart text-6xl mb-2"></i><p class="font-bold">Carrito vacío</p></div>'; return; } const g = cart.reduce((acc, i) => { const s = getStoreById(i.product.storeId); if(!acc[s.id]) acc[s.id] = { store: s, items: [], total: 0 }; acc[s.id].items.push(i); acc[s.id].total += (i.product.price * i.quantity); return acc; }, {}); document.getElementById('cart-items-container').innerHTML = Object.entries(g).map(([id, d]) => `<div class="bg-white rounded-2xl mb-4 shadow-sm border border-gray-100 overflow-hidden"><div class="bg-gray-50 p-4 border-b border-gray-100 font-extrabold text-sm text-gray-900 flex items-center gap-2"><i class="ph-fill ph-storefront text-brand-600"></i> ${d.store.name}</div><div class="p-5 gap-5 flex flex-col">${d.items.map(i => `<div class="flex gap-4 items-center"><img src="${i.product.image}" onerror="this.src='https://placehold.co/100x100?text=Sin+Imagen'" class="w-14 h-14 rounded-xl object-cover shadow-sm"><div class="flex-1 min-w-0"><p class="text-sm font-extrabold truncate text-gray-900">${i.product.name}</p><p class="text-brand-600 font-black text-sm">${formatMoney(i.product.price)}</p></div><div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg"><button onclick="updateQuantity('${i.product.id}', -1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">-</button><span class="w-7 text-center text-xs font-black">${i.quantity}</span><button onclick="updateQuantity('${i.product.id}', 1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">+</button></div></div>`).join('')}</div><div class="p-5 border-t border-gray-100"><div class="flex justify-between font-bold mb-4 text-gray-900"><span class="text-gray-500 uppercase tracking-wide text-xs">Subtotal:</span><span class="text-xl">${formatMoney(d.total)}</span></div><button onclick="sendOrder('${id}')" class="w-full bg-[#25D366] hover:bg-[#1da851] text-white font-extrabold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 transition-all transform hover:-translate-y-0.5"><i class="ph-fill ph-whatsapp-logo text-2xl"></i> Pedir por WhatsApp</button></div></div>`).join(''); };
         
-        // SOLUCIÓN DE ENVÍO DE WHATSAPP (SIN BLOQUEOS DEL NAVEGADOR)
         const sendOrder = (sId) => { 
             const store = getStoreById(sId);
             if(Number(store.saldo_total) <= 0) { showToast("Esta tienda se encuentra inactiva por falta de saldo."); return; }
@@ -659,10 +646,10 @@
             const d = cart.reduce((acc, i) => { if(i.product.storeId === sId) { acc.items.push(i); acc.total += (i.product.price * i.quantity); if(!acc.p) acc.p = store.phone; } return acc; }, { items: [], total: 0, p: '' }); 
             let m = `*¡Hola!* 👋\nMe interesa esto de MiPueblo Market:\n\n`; d.items.forEach(i => m += `▪️ ${i.quantity}x ${i.product.name} (${formatMoney(i.product.price * i.quantity)})\n`); m += `\n*Total: ${formatMoney(d.total)}*`; 
             
-            // Paso 1: Abrir WhatsApp inmediatamente (El navegador ya no lo bloqueará)
+            // 1. Redirección instantánea sin bloqueos de navegador
             window.open(`https://api.whatsapp.com/send?phone=${d.p}&text=${encodeURIComponent(m)}`, '_blank'); 
 
-            // Paso 2: Descontar el crédito en segundo plano silenciosamente
+            // 2. Deducción asíncrona segura
             setTimeout(async () => {
                 const last = localStorage.getItem(`last_${sId}`), now = new Date().getTime(); 
                 if(!last || (now - parseInt(last)) > 1800000) { 
@@ -672,7 +659,6 @@
                 } 
             }, 500);
 
-            // Paso 3: Limpiar el carrito de esta tienda
             cart = cart.filter(i => i.product.storeId !== sId); updateCartUI(); if(cart.length === 0) toggleCart(); 
         };
 

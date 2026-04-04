@@ -57,7 +57,7 @@
                 </a>
                 <div class="hidden md:flex items-center gap-6" id="desktop-nav-categories"></div>
                 <div class="flex items-center gap-3">
-                    <!-- BOTÓN VENDER / MI PANEL VISIBLE EN MÓVIL (CORREGIDO) -->
+                    <!-- BOTÓN VENDER / MI PANEL VISIBLE EN MÓVIL Y DESKTOP -->
                     <div id="auth-nav-container" class="block"></div>
                     
                     <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
@@ -148,17 +148,17 @@
                         <p class="text-sm text-gray-500 mt-2 font-medium">¿Ya tienes cuenta? <a href="#/login" class="text-brand-600 font-bold hover:underline">Inicia sesión</a></p>
                     </div>
                     <form id="register-form" onsubmit="handleRegistration(event)" class="space-y-4">
-                        <input type="text" id="reg-name" placeholder="Nombre de la Tienda" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
+                        <input type="text" id="reg-name" placeholder="Nombre de la Tienda" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-brand-500">
                         <div>
                             <label class="block text-[10px] font-bold text-brand-600 mb-1 uppercase tracking-wider ml-1">Selecciona tu giro principal</label>
-                            <select required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-white font-medium cursor-pointer" id="register-category"></select>
+                            <select required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-white font-medium cursor-pointer focus:ring-2 focus:ring-brand-500" id="register-category"></select>
                         </div>
-                        <input type="text" id="reg-resp" placeholder="Nombre del Responsable" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
-                        <input type="tel" id="reg-phone" placeholder="WhatsApp (10 dígitos)" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
-                        <input type="email" id="reg-email" placeholder="Correo Electrónico" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
-                        <input type="password" id="reg-pass" placeholder="Contraseña" required minlength="6" class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium">
+                        <input type="text" id="reg-resp" placeholder="Nombre del Responsable" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-brand-500">
+                        <input type="tel" id="reg-phone" placeholder="WhatsApp (10 dígitos)" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-brand-500">
+                        <input type="email" id="reg-email" placeholder="Correo Electrónico" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-brand-500">
+                        <input type="password" id="reg-pass" placeholder="Contraseña" required minlength="6" class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-brand-500">
                         <div class="text-xs text-gray-500 mt-2 ml-1">Al registrarte aceptas nuestros <a href="#/terminos" class="text-brand-600 hover:underline font-bold">Términos</a> y <a href="#/privacidad" class="text-brand-600 hover:underline font-bold">Privacidad</a>.</div>
-                        <button type="submit" id="btn-register" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-xl mt-6 shadow-lg transition-all">Registrar y Obtener Panel</button>
+                        <button type="submit" id="btn-register" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-xl mt-6 shadow-lg transition-all transform hover:-translate-y-0.5">Registrar y Obtener Panel</button>
                     </form>
                 </div>
             </div>
@@ -171,10 +171,10 @@
                     <div class="text-center mb-8"><div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 text-blue-600 mb-4 animate-float"><i class="ph-bold ph-lock-key text-3xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">Acceso a Vendedores</h2></div>
                     <form onsubmit="handleLogin(event)" class="space-y-5">
                         <div id="login-error" class="hidden bg-red-50 text-red-600 p-3 rounded-xl text-sm text-center font-bold border border-red-100"></div>
-                        <input type="email" id="login-email" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium" placeholder="tucorreo@ejemplo.com">
-                        <input type="password" id="login-password" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium" placeholder="••••••••">
+                        <input type="email" id="login-email" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-gray-900" placeholder="tucorreo@ejemplo.com">
+                        <input type="password" id="login-password" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-gray-900" placeholder="••••••••">
                         <div class="text-right"><a href="#/recuperar-password" class="text-sm font-bold text-gray-500 hover:text-gray-900">¿Olvidaste tu contraseña?</a></div>
-                        <button type="submit" id="btn-login" class="w-full py-3.5 bg-gray-900 hover:bg-black text-white font-extrabold rounded-xl shadow-lg transition-all">Iniciar Sesión</button>
+                        <button type="submit" id="btn-login" class="w-full py-3.5 bg-gray-900 hover:bg-black text-white font-extrabold rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">Iniciar Sesión</button>
                         <p class="text-center text-sm text-gray-500 mt-4 font-medium">¿No tienes tienda? <a href="#/registro-vendedor" class="text-brand-600 font-bold hover:underline">Regístrate gratis</a></p>
                     </form>
                 </div>
@@ -191,7 +191,7 @@
                         <p class="text-sm text-gray-500 mt-2 font-medium" id="reset-desc">Ingresa tu correo para generar un token de seguridad.</p>
                     </div>
                     <form id="form-req-token" onsubmit="requestResetToken(event)" class="space-y-4">
-                        <input type="email" id="reset-email" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium" placeholder="tucorreo@ejemplo.com">
+                        <input type="email" id="reset-email" required class="block w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 font-medium focus:ring-2 focus:ring-gray-900" placeholder="tucorreo@ejemplo.com">
                         <button type="submit" id="btn-req-token" class="w-full py-3.5 bg-gray-900 text-white font-extrabold rounded-xl shadow-lg">Generar Token</button>
                     </form>
                     <form id="form-validate-token" onsubmit="confirmPasswordReset(event)" class="space-y-4 hidden mt-4 border-t border-gray-100 pt-6">
@@ -230,10 +230,10 @@
                     <h1 class="text-3xl font-black text-gray-900 mb-6">Aviso de Privacidad</h1>
                     <div class="space-y-4 text-gray-600 font-medium text-sm leading-relaxed">
                         <p>De conformidad con las leyes de protección de datos aplicables, MiPueblo Market emite el presente aviso para informar a sus usuarios sobre el tratamiento de su información.</p>
-                        <p><strong>1. Datos Recopilados:</strong> Para compradores, no exigimos registro. Para comercios vendedores, recopilamos: Nombre del comercio, Responsable, WhatsApp y Correo.</p>
+                        <p><strong>1. Datos Recopilados:</strong> Para compradores, no exigimos registro. Para comercios vendedores, recopilamos: Nombre del comercio, Responsable, WhatsApp y Correo electrónico.</p>
                         <p><strong>2. Uso de la Información:</strong> Se utiliza exclusivamente para: a) Crear su escaparate digital. b) Redirigir pedidos de compradores a su WhatsApp. c) Acceso al panel administrativo. d) Contacto interno.</p>
                         <p><strong>3. Cookies y Almacenamiento Local:</strong> Utilizamos tecnologías como Local Storage y Session Storage exclusivamente con fines técnicos, anti-fraude y para mantener el estado del carrito temporalmente.</p>
-                        <p><strong>4. Transferencia de Datos:</strong> MiPueblo Market NO vende, alquila ni transfiere los correos electrónicos o números telefónicos a terceros.</p>
+                        <p><strong>4. Transferencia de Datos:</strong> MiPueblo Market NO vende, alquila ni transfiere los correos electrónicos o números telefónicos a terceros con fines de marketing de terceros.</p>
                     </div>
                 </div>
             </div>
@@ -249,7 +249,7 @@
             </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-14">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <!-- CRÉDITOS Y RECARGA (CORREGIDO) -->
+                    <!-- CRÉDITOS Y RECARGA -->
                     <div class="bg-white rounded-3xl shadow-lg p-6 border border-gray-100 flex flex-col justify-between">
                         <div class="flex justify-between items-start w-full">
                             <div>
@@ -273,8 +273,8 @@
                 <!-- PUBLICIDAD PREMIUM -->
                 <div class="mb-8 border border-brand-200 bg-brand-50 rounded-3xl p-6 text-center shadow-sm flex flex-col md:flex-row justify-between items-center">
                     <div class="text-left mb-4 md:mb-0">
-                        <h3 class="text-brand-800 font-extrabold mb-1 uppercase tracking-wide text-sm flex items-center gap-2"><i class="ph-bold ph-megaphone text-xl"></i> Publicidad Premium</h3>
-                        <p class="text-sm text-brand-700 font-medium">Aparece en el carrusel de Banners de la página principal.</p>
+                        <h3 class="text-brand-800 font-extrabold mb-1 uppercase tracking-wide text-sm flex items-center gap-2"><i class="ph-bold ph-megaphone text-xl"></i> Publicidad Premium (Banner)</h3>
+                        <p class="text-sm text-brand-700 font-medium">Aparece en el carrusel principal por 5 días.</p>
                     </div>
                     <button onclick="handleRequestBanner()" class="bg-brand-600 hover:bg-brand-700 text-white px-6 py-3.5 rounded-xl text-sm font-extrabold shadow-lg w-full md:w-auto transition-colors">Solicitar Banner (50 Créditos)</button>
                 </div>
@@ -344,10 +344,10 @@
 
     <script>
         // ==========================================
-        // 1. CONFIGURACIÓN
+        // 1. CONFIGURACIÓN Y NUMERO DE ADMIN
         // ==========================================
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwR6yHGr1ge3_1QHQsAJMoMYcHHCVq0knm9TJed8klXFTuuxLm7m3RFgtJbPODlirtf4Q/exec'; 
-        const ADMIN_WHATSAPP = "521234567890"; // <-- CAMBIA ESTO POR TU NÚMERO REAL
+        const ADMIN_WHATSAPP = "525512906477"; // Número corregido y validado
         
         const categoriesDB = [
             { id: 'comida', name: 'Comida', icon: 'ph-hamburger', color: 'text-orange-500', bg: 'bg-orange-100' },
@@ -362,13 +362,12 @@
         const getStoreById = (id) => storesDB.find(s => s.id === id);
         const getStoreBySlug = (slug) => storesDB.find(s => s.slug === slug);
         const getProductById = (id) => productsDB.find(p => p.id === id);
-        const getProductBySlug = (sId, pSlug) => productsDB.find(p => p.storeId === sId && p.slug === pSlug);
         const formatMoney = (a) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(a);
         const isLoggedIn = () => sessionStorage.getItem('auth_store') !== null;
         const getAuthStore = () => JSON.parse(sessionStorage.getItem('auth_store'));
 
         // ==========================================
-        // 2. FETCH SEGURO Y SINCRONIZACIÓN
+        // 2. FETCH SEGURO Y SINCRONIZACIÓN DE CADUCIDAD
         // ==========================================
         const fetchInitialData = async () => {
             try {
@@ -376,16 +375,23 @@
                 const result = await response.json();
                 if(result.status === 'success') { 
                     storesDB = result.data.tiendas || []; 
-                    productsDB = result.data.productos || []; 
+                    let prods = result.data.productos || []; 
                     bannersDB = result.data.banners || []; 
                     
-                    // SINCRONIZAR SALDO AUTOMÁTICAMENTE (CORREGIDO)
+                    const todayStr = new Date().toISOString().split('T')[0];
+
+                    // Filtrar productos destacados expirados en Frontend
+                    productsDB = prods.map(p => {
+                        if (p.isHighlighted && p.fechaVencimiento && p.fechaVencimiento < todayStr) {
+                            p.isHighlighted = false; // Se venció el plazo de 5 días
+                        }
+                        return p;
+                    });
+                    
                     if (isLoggedIn()) {
                         const sessionStore = getAuthStore();
                         const updatedStore = storesDB.find(s => s.id === sessionStore.id);
-                        if (updatedStore) {
-                            sessionStorage.setItem('auth_store', JSON.stringify(updatedStore));
-                        }
+                        if (updatedStore) sessionStorage.setItem('auth_store', JSON.stringify(updatedStore));
                     }
                 }
             } catch (e) {
@@ -406,13 +412,15 @@
         };
 
         // ==========================================
-        // 3. UI: CARDS COMPACTAS PARA MÓVIL
+        // 3. UI: CARDS COMPACTAS
         // ==========================================
         const createProductCardHTML = (p, s, isCarousel = false) => {
             const layoutClasses = isCarousel ? "flex-none w-40 sm:w-52 snap-start" : "w-full";
             const highlightClasses = p.isHighlighted ? "ring-2 ring-yellow-400 ring-inset shadow-yellow-100 shadow-lg" : "border border-gray-100 shadow-sm";
+            // SE USAN SLUGS PRIMERO, Y SI ESTA VACIO SE RESPALDA CON ID
+            const urlPath = `#/${s.slug}/${p.slug || p.id}`;
             return `
-            <div class="product-card bg-white rounded-[1.25rem] ${highlightClasses} ${layoutClasses} overflow-hidden flex flex-col cursor-pointer" onclick="window.location.hash='#/${s.slug}/${p.slug}'">
+            <div class="product-card bg-white rounded-[1.25rem] ${highlightClasses} ${layoutClasses} overflow-hidden flex flex-col cursor-pointer" onclick="window.location.hash='${urlPath}'">
                 <div class="h-32 sm:h-44 w-full bg-gray-100 relative"><img src="${p.image}" class="w-full h-full object-cover"></div>
                 <div class="p-3.5 flex flex-col flex-1">
                     <div class="text-[10px] text-brand-600 font-bold mb-1 truncate hover:underline" onclick="event.stopPropagation(); window.location.hash='#/${s.slug}'"><i class="ph-fill ph-storefront"></i> ${s.name}</div>
@@ -426,7 +434,7 @@
         };
 
         // ==========================================
-        // 4. RUTAS (SLUGS AMIGABLES)
+        // 4. RUTAS INFALIBLES (SLUGS + ID BACKUP)
         // ==========================================
         const router = () => {
             const path = (window.location.hash || '#/').replace('#/', ''); const parts = path.split('/').filter(p => p !== '');
@@ -468,9 +476,13 @@
             document.getElementById('catalogo-container').innerHTML = cHTML || '<div class="col-span-full text-center text-gray-400 font-bold py-10">Catálogo vacío.</div>';
         };
 
-        const renderProductDetail = (sSlug, pSlug) => { 
+        const renderProductDetail = (sSlug, pSlugOrId) => { 
             const s = getStoreBySlug(sSlug); if(!s) return window.location.hash='#/'; 
-            const p = getProductBySlug(s.id, pSlug); if(!p) return window.location.hash='#/'; 
+            
+            // DOBLE VALIDACIÓN: Busca por SLUG, si no lo encuentra, busca por ID. Jamás dará blanco.
+            const p = productsDB.find(prod => prod.storeId === s.id && (prod.slug === pSlugOrId || prod.id === pSlugOrId)); 
+            if(!p) return window.location.hash='#/'; 
+            
             document.getElementById('product-detail-container').innerHTML = `<div class="bg-white rounded-[2rem] shadow-2xl shadow-gray-200/50 flex flex-col md:flex-row overflow-hidden border border-gray-100"><img src="${p.image}" class="md:w-1/2 h-[350px] md:h-[500px] object-cover"><div class="p-8 md:p-12 md:w-1/2 flex flex-col"><a href="#/${s.slug}" class="text-brand-700 font-bold mb-4 inline-flex text-xs uppercase tracking-wider bg-brand-50 w-fit px-4 py-1.5 rounded-full hover:bg-brand-100 transition-colors"><i class="ph-fill ph-storefront mr-1.5 text-base"></i> Visitar ${s.name}</a><h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">${p.name}</h1><p class="text-3xl sm:text-4xl font-black text-brand-600 mb-8">${formatMoney(p.price)}</p><div class="h-px w-full bg-gray-100 mb-8"></div><p class="text-gray-500 mb-8 font-medium leading-relaxed">${p.description}</p><button onclick="addToCart('${p.id}', true)" class="mt-auto w-full bg-brand-600 hover:bg-brand-700 transition-colors text-white font-black py-4 px-6 rounded-2xl shadow-lg shadow-brand-500/30 flex items-center justify-center gap-3 text-lg"><i class="ph-bold ph-shopping-cart text-2xl"></i> Agregar al carrito</button></div></div>`; 
             document.getElementById('view-product').classList.add('active'); 
         };
@@ -487,7 +499,7 @@
         const renderFilteredProducts = (pr) => { document.getElementById('category-products-container').innerHTML = pr.length ? pr.map(p => createProductCardHTML(p, getStoreById(p.storeId), false)).join('') : '<div class="col-span-full py-16 text-center text-gray-400 font-bold"><i class="ph-thin ph-magnifying-glass text-5xl mb-2"></i><p>Sin resultados</p></div>'; };
 
         // ==========================================
-        // 5. PANEL VENDEDOR Y MONETIZACIÓN
+        // 5. PANEL VENDEDOR, MONETIZACIÓN Y FECHAS
         // ==========================================
         const renderPanel = () => {
             const store = getAuthStore(); if (!store) return handleLogout();
@@ -495,14 +507,7 @@
             document.getElementById('panel-credits').innerText = store.saldo_total;
             const credStat = document.getElementById('panel-credits-status');
             
-            // Lógica corregida para visualización de estatus y saldo a 0
-            if(Number(store.saldo_total) <= 0) {
-                credStat.innerHTML=`<span class="text-red-600 font-black uppercase"><i class="ph-bold ph-warning-circle"></i> Tienda inactiva</span>`;
-            } else if(Number(store.saldo_total) <= 5) { 
-                credStat.innerHTML=`<span class="text-red-500 font-bold">⚠️ Créditos bajos.</span>`; 
-            } else { 
-                credStat.innerHTML=`<span class="text-gray-400">Saldo OK.</span>`; 
-            }
+            if(Number(store.saldo_total) <= 0) { credStat.innerHTML=`<span class="text-red-600 font-black uppercase"><i class="ph-bold ph-warning-circle"></i> Tienda inactiva</span>`; } else if(Number(store.saldo_total) <= 5) { credStat.innerHTML=`<span class="text-red-500 font-bold">⚠️ Créditos bajos.</span>`; } else { credStat.innerHTML=`<span class="text-gray-400">Saldo OK.</span>`; }
             
             const sp = productsDB.filter(p => p.storeId === store.id);
             document.getElementById('panel-product-count').innerText = sp.length;
@@ -536,7 +541,6 @@
             reader.readAsDataURL(file);
         };
 
-        // BOTÓN RECARGAR SALDO (CORREGIDO)
         const handleRecharge = () => {
             const store = getAuthStore();
             const msg = `Hola, soy la tienda *${store.name}*. Quiero comprar una recarga de créditos (Leads) para mi tienda en MiPueblo Market.`;
@@ -546,39 +550,59 @@
         const handleHighlightProduct = async (pId) => {
             const store = getAuthStore();
             if(Number(store.saldo_total) < 10) { showToast("Necesitas al menos 10 créditos para destacar."); return; }
-            if(!confirm("Destacar este producto te costará 10 créditos. ¿Deseas continuar?")) return;
+            if(!confirm("Destacar este producto costará 10 créditos y durará 5 días. ¿Deseas continuar?")) return;
             
             showToast("Procesando pago...");
-            const res = await postToAppsScript({ action: 'highlightProduct', storeId: store.id, productId: pId });
-            if(res.status === 'success') { await fetchInitialData(); showToast("¡Producto destacado!"); } else { showToast("Error al procesar."); }
+            // Crear fecha de vencimiento: Hoy + 5 días
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 5);
+            const formattedDate = expirationDate.toISOString().split('T')[0];
+
+            const res = await postToAppsScript({ action: 'highlightProduct', storeId: store.id, productId: pId, fechaVencimiento: formattedDate });
+            if(res.status === 'success') { 
+                store.saldo_total -= 10; 
+                sessionStorage.setItem('auth_store', JSON.stringify(store)); 
+                await fetchInitialData(); 
+                showToast("¡Producto destacado!"); 
+            } else { showToast("Error al procesar."); }
         };
 
         const handleRequestBanner = async () => {
             const store = getAuthStore();
             if(Number(store.saldo_total) < 50) { showToast("Necesitas 50 créditos para un banner."); return; }
-            if(!confirm("Esto descontará 50 créditos de tu saldo y abrirá WhatsApp para enviarnos la imagen. ¿Continuar?")) return;
+            if(!confirm("Esto descontará 50 créditos y tu banner durará 5 días. Se abrirá WhatsApp para enviarnos la imagen. ¿Continuar?")) return;
             
-            showToast("Procesando...");
-            const res = await postToAppsScript({ action: 'requestBanner', storeId: store.id });
-            if(res.status === 'success') {
+            showToast("Calculando fechas...");
+            const today = new Date();
+            const expDate = new Date();
+            expDate.setDate(expDate.getDate() + 5);
+
+            const payload = {
+                action: 'requestBanner',
+                storeId: store.id,
+                fechaSolicitud: today.toISOString().split('T')[0],
+                fechaVencimiento: expDate.toISOString().split('T')[0]
+            };
+
+            const res = await postToAppsScript(payload);
+            if(res && res.status === 'success') {
+                store.saldo_total -= 50; 
+                sessionStorage.setItem('auth_store', JSON.stringify(store)); 
                 await fetchInitialData();
-                const msg = `Hola administrador. Soy la tienda *${store.name}*. Acabo de pagar 50 créditos para un Banner. Aquí te envío la imagen que quiero subir:`;
-                window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-            } else { showToast("Error procesando el cobro"); }
+                showToast("Redirigiendo a WhatsApp...");
+                const msg = `Hola administrador. Soy la tienda *${store.name}*. Acabo de pagar 50 créditos para un Banner de 5 días. Aquí te envío la imagen que quiero subir:`;
+                window.open(`https://api.whatsapp.com/send?phone=${ADMIN_WHATSAPP}&text=${encodeURIComponent(msg)}`, '_blank');
+            } else { 
+                showToast("Error procesando el cobro"); 
+            }
         };
 
         const handleDeleteProduct = async (pId) => { if(!confirm("¿Seguro que deseas eliminar este producto?")) return; showToast("Eliminando..."); const res = await postToAppsScript({ action: 'deleteProduct', storeId: getAuthStore().id, productId: pId }); if(res.status === 'success') { showToast("Producto eliminado."); await fetchInitialData(); } };
-        const handleDeleteStore = async () => { const code = prompt("ZONA DE PELIGRO: Escribe ELIMINAR para confirmar"); if(code !== 'ELIMINAR') return; const res = await postToAppsScript({ action: 'deleteStore', storeId: getAuthStore().id }); if(res.status === 'success') { handleLogout(); } };
 
         // ==========================================
-        // 6. AUTENTICACIÓN Y EXTRAS (BOTÓN MÓVIL CORREGIDO)
+        // 6. AUTENTICACIÓN
         // ==========================================
-        const updateNavAuthStatus = () => { 
-            const c = document.getElementById('auth-nav-container'); 
-            isLoggedIn() 
-                ? c.innerHTML = `<a href="#/panel" class="text-xs sm:text-sm font-extrabold text-white bg-gray-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl flex items-center gap-1.5 shadow-md transition-colors hover:bg-black"><i class="ph-bold ph-user-circle text-lg"></i> <span class="hidden sm:inline">Mi Panel</span></a>` 
-                : c.innerHTML = `<a href="#/login" class="text-xs sm:text-sm font-bold text-gray-600 hover:text-brand-600 flex items-center gap-1.5 bg-gray-50 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-colors"><i class="ph-bold ph-storefront text-lg"></i> <span class="hidden sm:inline">Vender</span></a>`; 
-        };
+        const updateNavAuthStatus = () => { const c = document.getElementById('auth-nav-container'); isLoggedIn() ? c.innerHTML = `<a href="#/panel" class="text-xs sm:text-sm font-extrabold text-white bg-gray-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl flex items-center gap-1.5 shadow-md transition-colors hover:bg-black"><i class="ph-bold ph-user-circle text-lg"></i> <span class="hidden sm:inline">Mi Panel</span></a>` : c.innerHTML = `<a href="#/login" class="text-xs sm:text-sm font-bold text-gray-600 hover:text-brand-600 flex items-center gap-1.5 bg-gray-50 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl transition-colors"><i class="ph-bold ph-storefront text-lg"></i> <span class="hidden sm:inline">Vender</span></a>`; };
         const handleLogin = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-login'); btn.innerText = "Verificando..."; btn.disabled = true; const res = await postToAppsScript({ action: 'login', email: document.getElementById('login-email').value, password: document.getElementById('login-password').value }); if (res.status === 'success') { document.getElementById('login-error').classList.add('hidden'); sessionStorage.setItem('auth_store', JSON.stringify(res.store)); window.location.hash = '#/panel'; } else { const err = document.getElementById('login-error'); err.innerText = "Error al iniciar sesión."; err.classList.remove('hidden'); } btn.innerText = "Iniciar Sesión"; btn.disabled = false; };
         const handleRegistration = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-register'); btn.innerText = 'Creando tienda...'; btn.disabled = true; const payload = { action: 'registerStore', name: document.getElementById('reg-name').value, categoryId: document.getElementById('register-category').value, responsable: document.getElementById('reg-resp').value, phone: document.getElementById('reg-phone').value, email: document.getElementById('reg-email').value, password: document.getElementById('reg-pass').value }; const res = await postToAppsScript(payload); if(res.status === 'success') { showToast("¡Tienda registrada! Inicia sesión."); e.target.reset(); window.location.hash = '#/login'; } btn.innerText = 'Registrar y Obtener Panel'; btn.disabled = false; };
         const handleLogout = () => { sessionStorage.removeItem('auth_store'); updateNavAuthStatus(); window.location.hash = '#/login'; showToast("Sesión cerrada."); };
@@ -604,7 +628,7 @@
                 localStorage.setItem(`last_${sId}`, now.toString()); 
                 await fetchInitialData(); // Actualiza el saldo tras el pedido
             } 
-            cart = cart.filter(i => i.product.storeId !== sId); updateCartUI(); window.open(`https://wa.me/${d.p}?text=${encodeURIComponent(m)}`, '_blank'); if(cart.length === 0) toggleCart(); 
+            cart = cart.filter(i => i.product.storeId !== sId); updateCartUI(); window.open(`https://api.whatsapp.com/send?phone=${d.p}&text=${encodeURIComponent(m)}`, '_blank'); if(cart.length === 0) toggleCart(); 
         };
 
         const toggleCart = () => { document.getElementById('cart-sidebar').classList.toggle('translate-x-full'); document.getElementById('cart-overlay').classList.toggle('hidden'); };

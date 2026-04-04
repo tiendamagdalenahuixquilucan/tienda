@@ -55,6 +55,7 @@
                 </a>
                 <div class="hidden md:flex items-center gap-6" id="desktop-nav-categories"></div>
                 <div class="flex items-center gap-3">
+                    <!-- CONTENEDOR BOTÓN VENDER / PANEL -->
                     <div id="auth-nav-container" class="block"></div>
                     <div class="h-6 w-px bg-gray-200 hidden sm:block"></div>
                     <button onclick="toggleCart()" class="relative p-2 text-gray-700 hover:text-brand-600 bg-gray-100 hover:bg-brand-50 rounded-full transition-colors">
@@ -84,17 +85,33 @@
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-                <div class="mb-14 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="mb-12 animate-fade-in-up" style="animation-delay: 0.2s;">
                     <h2 class="text-xl font-extrabold text-gray-900 mb-6 flex items-center gap-2"><i class="ph-fill ph-squares-four text-brand-600"></i> Categorías</h2>
                     <div class="flex overflow-x-auto gap-4 pb-4 hide-scrollbar snap-x" id="categories-carousel"></div>
                 </div>
-                <div class="mb-14 animate-fade-in-up" style="animation-delay: 0.3s;">
+                
+                <!-- CARRUSEL 1: DESTACADOS -->
+                <div class="mb-12 animate-fade-in-up" style="animation-delay: 0.3s;">
                     <div class="flex items-center gap-3 mb-6"><div class="bg-gradient-to-br from-yellow-100 to-yellow-200 p-2 rounded-xl text-yellow-600 shadow-sm"><i class="ph-fill ph-star text-2xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">Destacados</h2></div>
                     <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 hide-scrollbar snap-x p-1" id="destacados-container"></div>
                 </div>
-                <div id="catalogo" class="animate-fade-in-up" style="animation-delay: 0.4s;">
-                    <div class="flex items-center gap-3 mb-6"><div class="bg-gray-100 p-2 rounded-xl text-gray-600 shadow-sm"><i class="ph-bold ph-trend-up text-2xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">Novedades</h2></div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5" id="catalogo-container"></div>
+
+                <!-- CARRUSEL 2: A DOMICILIO -->
+                <div class="mb-12 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="flex items-center gap-3 mb-6"><div class="bg-red-100 p-2 rounded-xl text-red-600 shadow-sm"><i class="ph-fill ph-moped text-2xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">🛵 Pídelo a Domicilio</h2></div>
+                    <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 hide-scrollbar snap-x p-1" id="domicilio-container"></div>
+                </div>
+
+                <!-- CARRUSEL 3: OFERTAS -->
+                <div class="mb-12 animate-fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="flex items-center gap-3 mb-6"><div class="bg-green-100 p-2 rounded-xl text-green-600 shadow-sm"><i class="ph-fill ph-tag text-2xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">🏷️ Ofertas Locales</h2></div>
+                    <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 hide-scrollbar snap-x p-1" id="ofertas-container"></div>
+                </div>
+
+                <!-- CARRUSEL 4: NOVEDADES -->
+                <div id="catalogo" class="animate-fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="flex items-center gap-3 mb-6"><div class="bg-blue-100 p-2 rounded-xl text-blue-600 shadow-sm"><i class="ph-fill ph-sparkle text-2xl"></i></div><h2 class="text-2xl font-extrabold text-gray-900">🆕 Novedades</h2></div>
+                    <div class="flex overflow-x-auto gap-4 sm:gap-6 pb-6 hide-scrollbar snap-x p-1" id="catalogo-container"></div>
                 </div>
             </div>
         </section>
@@ -212,7 +229,6 @@
         <!-- VISTA: PANEL DE CONTROL (VENDEDOR) -->
         <section id="view-panel" class="view-section bg-gray-50 min-h-screen">
             <div class="bg-gray-900 text-white pb-24 pt-8">
-                <!-- CABECERA PANEL CON BOTÓN DE INICIO VISIBLE -->
                 <div class="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div><h1 class="text-2xl font-extrabold" id="panel-store-name">Mi Panel</h1><p class="text-gray-400 text-sm font-medium">Gestiona tu catálogo y saldo</p></div>
                     <div class="flex items-center gap-2 sm:gap-3">
@@ -241,7 +257,7 @@
                 <!-- SECCIÓN DE PAQUETES EXCLUSIVA DEL PANEL DE VENDEDOR -->
                 <div class="mb-8 bg-white rounded-3xl shadow-lg border border-gray-100 p-6 sm:p-8">
                     <h3 class="text-xl font-extrabold text-gray-900 mb-2 flex items-center gap-2"><i class="ph-fill ph-whatsapp-logo text-brand-600"></i> Paquetes de Créditos (Leads)</h3>
-                    <p class="text-sm text-gray-500 mb-6 font-medium">Cada crédito equivale a un cliente potencial contactándote por WhatsApp. <strong class="text-brand-700">Inversión: $2.00 MXN por contacto real.</strong></p>
+                    <p class="text-sm text-gray-500 mb-6 font-medium">Cada crédito equivale a un cliente potencial contactándote por WhatsApp. <strong class="text-brand-700 bg-brand-50 px-2 py-1 rounded">Inversión: $2.00 MXN por contacto real.</strong></p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
                         <div class="border-2 border-gray-100 hover:border-brand-500 rounded-2xl p-5 flex flex-col justify-between transition-colors bg-gray-50 hover:bg-brand-50 cursor-pointer group" onclick="handleRecharge('Básico (50 Créditos)', 100)">
                             <div><span class="bg-gray-200 text-gray-700 text-[10px] font-black px-2 py-1 rounded-md uppercase tracking-wider">Básico</span><h4 class="text-2xl font-black text-gray-900 mt-3">50 Leads</h4><p class="text-sm font-bold text-brand-600 mt-1">$100.00 MXN</p></div>
@@ -275,7 +291,8 @@
                                 <input type="text" id="new-prod-name" required class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Nombre del Producto">
                                 <input type="number" id="new-prod-price" required min="1" class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Precio ($)">
                                 <div class="relative">
-                                    <label class="block text-[10px] font-black text-gray-500 mb-1 uppercase tracking-wider ml-1">Foto (Click para Elegir o Tomar)</label>
+                                    <label class="block text-[10px] font-black text-gray-500 mb-1 uppercase tracking-wider ml-1">Foto (Se comprimirá automáticamente)</label>
+                                    <!-- CÁMARA REMOVIDA: accept standard para permitir abrir galería o cámara -->
                                     <input type="file" id="new-prod-image-file" accept="image/*" required class="w-full p-2 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium file:mr-4 file:py-1.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-extrabold file:bg-brand-100 file:text-brand-700 hover:file:bg-brand-200 cursor-pointer">
                                 </div>
                                 <textarea id="new-prod-desc" required rows="3" class="w-full p-3 border border-gray-200 rounded-xl text-sm bg-gray-50 font-medium" placeholder="Añade una descripción llamativa..."></textarea>
@@ -337,12 +354,13 @@
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwR6yHGr1ge3_1QHQsAJMoMYcHHCVq0knm9TJed8klXFTuuxLm7m3RFgtJbPODlirtf4Q/exec'; 
         const ADMIN_WHATSAPP = "525512906477"; 
         
+        // SOLUCIÓN ICONOS: Usamos Emojis Nativos para garantizar que siempre se vean (0 fallas en móvil)
         const categoriesDB = [
-            { id: 'comida', name: 'Comida', icon: 'ph-hamburger', color: 'text-orange-500', bg: 'bg-orange-100' },
-            { id: 'tecnologia', name: 'Tecnología', icon: 'ph-device-mobile', color: 'text-blue-500', bg: 'bg-blue-100' },
-            { id: 'hogar', name: 'Hogar', icon: 'ph-house', color: 'text-teal-500', bg: 'bg-teal-100' },
-            { id: 'deportes', name: 'Deportes', icon: 'ph-sneaker', color: 'text-red-500', bg: 'bg-red-100' },
-            { id: 'ropa', name: 'Moda y Ropa', icon: 'ph-t-shirt', color: 'text-pink-500', bg: 'bg-pink-100' }
+            { id: 'comida', name: 'Comida', icon: '🍔', color: 'text-orange-600', bg: 'bg-orange-100' },
+            { id: 'tecnologia', name: 'Tecnología', icon: '📱', color: 'text-blue-600', bg: 'bg-blue-100' },
+            { id: 'hogar', name: 'Hogar', icon: '🏠', color: 'text-teal-600', bg: 'bg-teal-100' },
+            { id: 'deportes', name: 'Deportes', icon: '⚽', color: 'text-red-600', bg: 'bg-red-100' },
+            { id: 'ropa', name: 'Moda y Ropa', icon: '👕', color: 'text-pink-600', bg: 'bg-pink-100' }
         ];
 
         let storesDB = []; let productsDB = []; let bannersDB = []; let cart = []; let currentCategoryProducts = []; let resetEmailTemporal = '';
@@ -355,6 +373,16 @@
         const formatMoney = (a) => new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(a);
         const isLoggedIn = () => sessionStorage.getItem('auth_store') !== null;
         const getAuthStore = () => JSON.parse(sessionStorage.getItem('auth_store'));
+
+        // BYPASS IMÁGENES ROTAS: Función que asegura que el link de Google Drive siempre se pueda mostrar
+        const getSafeImageUrl = (url) => {
+            if (!url) return 'https://placehold.co/400x400?text=Sin+Imagen';
+            if (url.includes('drive.google.com')) {
+                const match = url.match(/id=([a-zA-Z0-9_-]+)/);
+                if (match && match[1]) return `https://lh3.googleusercontent.com/d/${match[1]}`; // URL Segura sin bloqueos
+            }
+            return url;
+        };
 
         // ==========================================
         // 2. FETCH SEGURO Y SINCRONIZACIÓN
@@ -408,11 +436,11 @@
             const prodPath = p.slug || p.id;
             const urlPath = `#/${storePath}/${prodPath}`;
             
-            // LA MAGIA AQUÍ: absolute inset-0 dentro de un contenedor relativo evita que la foto se aplaste en móvil
+            // ESTRUCTURA BLINDADA PARA IMÁGENES: absolute inset-0 evita que se aplaste en móvil, getSafeImageUrl evita roturas
             return `
             <div class="product-card bg-white rounded-[1.25rem] ${highlightClasses} ${layoutClasses} overflow-hidden flex flex-col cursor-pointer relative" onclick="window.location.hash='${urlPath}'">
                 <div class="w-full h-32 sm:h-44 bg-gray-100 relative overflow-hidden">
-                    <img src="${p.image || 'https://placehold.co/400x400?text=Sin+Imagen'}" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=Sin+Imagen'" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="${getSafeImageUrl(p.image)}" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=Sin+Imagen'" class="absolute inset-0 w-full h-full object-cover">
                 </div>
                 <div class="p-3.5 flex flex-col flex-1">
                     <div class="text-[10px] text-brand-600 font-bold mb-1 truncate hover:underline" onclick="event.stopPropagation(); window.location.hash='#/${storePath}'"><i class="ph-fill ph-storefront"></i> ${s.name}</div>
@@ -442,6 +470,7 @@
             else if (path === 'privacidad') { document.getElementById('view-privacy').classList.add('active'); nav.classList.remove('hidden'); }
             else if (path === 'recuperar-password') { document.getElementById('view-forgot-password').classList.add('active'); }
             else if (parts[0] === 'categoria' && parts[1]) { renderCategoryView(parts[1]); } 
+            
             else if (parts.length === 1 && getStoreBySlug(parts[0])) { renderStoreProfile(parts[0]); } 
             else if (parts.length === 2 && getStoreBySlug(parts[0])) { renderProductDetail(parts[0], parts[1]); } 
             else { window.location.hash = '#/'; }
@@ -449,23 +478,37 @@
         window.addEventListener('hashchange', router);
 
         const renderHome = () => {
-            document.getElementById('ad-banners').innerHTML = bannersDB.map((b, i) => `<div class="snap-center shrink-0 w-full relative cursor-pointer" onclick="window.location.hash='#/${getStoreById(b.storeId)?.slug || getStoreById(b.storeId)?.id || ''}'"><img src="${b.imageUrl}" onerror="this.src='https://placehold.co/800x400?text=Banner'" class="w-full h-full object-cover"></div>`).join('');
+            document.getElementById('ad-banners').innerHTML = bannersDB.map((b, i) => `<div class="snap-center shrink-0 w-full relative cursor-pointer" onclick="window.location.hash='#/${getStoreById(b.storeId)?.slug || getStoreById(b.storeId)?.id || ''}'"><img src="${getSafeImageUrl(b.imageUrl)}" onerror="this.src='https://placehold.co/800x400?text=Banner'" class="w-full h-full object-cover"></div>`).join('');
             document.getElementById('banner-dots').innerHTML = bannersDB.map((_, i) => `<div class="carousel-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer shadow-sm" onclick="document.getElementById('ad-banners').scrollTo({left: document.getElementById('ad-banners').clientWidth * ${i}, behavior: 'smooth'})" id="dot-${i}"></div>`).join('');
             if(bannersDB.length) document.getElementById('dot-0')?.classList.add('active');
             
             document.getElementById('desktop-nav-categories').innerHTML = categoriesDB.map(c => `<a href="#/categoria/${c.id}" class="text-sm font-bold text-gray-500 hover:text-brand-600 transition-colors">${c.name}</a>`).join('');
             document.getElementById('mobile-nav-categories').innerHTML = categoriesDB.map(c => `<a href="#/categoria/${c.id}" class="px-4 py-1.5 bg-gray-100 rounded-full text-xs font-bold text-gray-700 whitespace-nowrap">${c.name}</a>`).join('');
-            document.getElementById('categories-carousel').innerHTML = categoriesDB.map(cat => `<a href="#/categoria/${cat.id}" class="category-item flex-none snap-start flex flex-col items-center gap-3 w-20 sm:w-24 cursor-pointer"><div class="category-icon w-14 h-14 sm:w-16 sm:h-16 rounded-2xl ${cat.bg} ${cat.color} flex justify-center items-center text-2xl sm:text-3xl shadow-sm"><i class="${cat.icon}"></i></div><span class="text-[10px] sm:text-xs font-bold text-gray-600 text-center">${cat.name}</span></a>`).join('');
+            document.getElementById('categories-carousel').innerHTML = categoriesDB.map(cat => `<a href="#/categoria/${cat.id}" class="category-item flex-none snap-start flex flex-col items-center gap-3 w-20 sm:w-24 cursor-pointer"><div class="category-icon w-14 h-14 sm:w-16 sm:h-16 rounded-2xl ${cat.bg} ${cat.color} flex justify-center items-center text-2xl sm:text-3xl shadow-sm">${cat.icon}</div><span class="text-[10px] sm:text-xs font-bold text-gray-600 text-center">${cat.name}</span></a>`).join('');
             
-            let dHTML = '', cHTML = '';
-            productsDB.forEach(p => {
+            let htmlDestacados = '', htmlDomicilio = '', htmlOfertas = '', htmlNovedades = '';
+            
+            // Invertimos para que las Novedades reales salgan primero
+            const reversedProducts = [...productsDB].reverse();
+
+            reversedProducts.forEach((p, index) => {
                 const s = getStoreById(p.storeId); if (!s) return;
-                const cardGrid = createProductCardHTML(p, s, false);
                 const cardCarousel = createProductCardHTML(p, s, true);
-                p.isHighlighted ? dHTML += cardCarousel : null; cHTML += cardGrid;
+                
+                // 1. Carrusel Destacados
+                if(p.isHighlighted) htmlDestacados += cardCarousel;
+                // 2. Carrusel A Domicilio (Asumimos Comida/Hogar por ahora)
+                if(s.categoryId === 'comida') htmlDomicilio += cardCarousel;
+                // 3. Carrusel Ofertas (Productos por debajo de $200 como gancho local)
+                if(p.price <= 200) htmlOfertas += cardCarousel;
+                // 4. Novedades (Todos, mostramos los últimos 10)
+                if(index < 10) htmlNovedades += createProductCardHTML(p, s, false);
             });
-            document.getElementById('destacados-container').innerHTML = dHTML || '<p class="text-gray-400 text-sm ml-2 font-medium">Aún no hay productos destacados.</p>'; 
-            document.getElementById('catalogo-container').innerHTML = cHTML || '<div class="col-span-full text-center text-gray-400 font-bold py-10">Catálogo vacío.</div>';
+
+            document.getElementById('destacados-container').innerHTML = htmlDestacados || '<p class="text-gray-400 text-sm ml-2 font-medium">Aún no hay productos destacados.</p>'; 
+            document.getElementById('domicilio-container').innerHTML = htmlDomicilio || '<p class="text-gray-400 text-sm ml-2 font-medium">No hay servicios a domicilio disponibles hoy.</p>'; 
+            document.getElementById('ofertas-container').innerHTML = htmlOfertas || '<p class="text-gray-400 text-sm ml-2 font-medium">No hay ofertas publicadas.</p>'; 
+            document.getElementById('catalogo-container').innerHTML = htmlNovedades || '<div class="col-span-full text-center text-gray-400 font-bold py-10">Catálogo vacío.</div>';
         };
 
         const renderProductDetail = (sSlug, pSlugOrId) => { 
@@ -474,21 +517,19 @@
             const p = getProductBySlug(s.id, pSlugOrId); 
             if(!p) return window.location.hash='#/'; 
             
-            // CABECERA SUPERIOR EN DETALLE DE PRODUCTO
             document.getElementById('product-detail-container').innerHTML = `
                 <div class="mb-4">
                     <a href="#/" class="bg-white border border-gray-200 text-gray-700 hover:text-brand-600 font-bold text-sm px-5 py-2.5 rounded-xl inline-flex items-center shadow-sm transition-colors">
-                        <i class="ph-bold ph-house mr-2 text-lg"></i> Inicio
+                        <i class="ph-bold ph-house mr-2 text-lg"></i> Volver al Inicio
                     </a>
                 </div>
-                <div class="bg-white rounded-[2rem] shadow-2xl shadow-gray-200/50 flex flex-col md:flex-row overflow-hidden border border-gray-100"><img src="${p.image || 'https://placehold.co/400x400?text=Sin+Imagen'}" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=Sin+Imagen'" class="md:w-1/2 h-[350px] md:h-[500px] object-cover"><div class="p-8 md:p-12 md:w-1/2 flex flex-col"><a href="#/${s.slug || s.id}" class="text-brand-700 font-bold mb-4 inline-flex text-xs uppercase tracking-wider bg-brand-50 w-fit px-4 py-1.5 rounded-full hover:bg-brand-100 transition-colors"><i class="ph-fill ph-storefront mr-1.5 text-base"></i> Visitar ${s.name}</a><h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">${p.name}</h1><p class="text-3xl sm:text-4xl font-black text-brand-600 mb-8">${formatMoney(p.price)}</p><div class="h-px w-full bg-gray-100 mb-8"></div><p class="text-gray-500 mb-8 font-medium leading-relaxed">${p.description}</p><button onclick="addToCart('${p.id}', true)" class="mt-auto w-full bg-brand-600 hover:bg-brand-700 transition-colors text-white font-black py-4 px-6 rounded-2xl shadow-lg shadow-brand-500/30 flex items-center justify-center gap-3 text-lg"><i class="ph-bold ph-shopping-cart text-2xl"></i> Agregar al carrito</button></div></div>`; 
+                <div class="bg-white rounded-[2rem] shadow-2xl shadow-gray-200/50 flex flex-col md:flex-row overflow-hidden border border-gray-100"><img src="${getSafeImageUrl(p.image)}" onerror="this.onerror=null; this.src='https://placehold.co/400x400?text=Sin+Imagen'" class="md:w-1/2 h-[350px] md:h-[500px] object-cover"><div class="p-8 md:p-12 md:w-1/2 flex flex-col"><a href="#/${s.slug || s.id}" class="text-brand-700 font-bold mb-4 inline-flex text-xs uppercase tracking-wider bg-brand-50 w-fit px-4 py-1.5 rounded-full hover:bg-brand-100 transition-colors"><i class="ph-fill ph-storefront mr-1.5 text-base"></i> Visitar ${s.name}</a><h1 class="text-3xl sm:text-4xl font-black text-gray-900 mb-4 leading-tight">${p.name}</h1><p class="text-3xl sm:text-4xl font-black text-brand-600 mb-8">${formatMoney(p.price)}</p><div class="h-px w-full bg-gray-100 mb-8"></div><p class="text-gray-500 mb-8 font-medium leading-relaxed">${p.description}</p><button onclick="addToCart('${p.id}', true)" class="mt-auto w-full bg-brand-600 hover:bg-brand-700 transition-colors text-white font-black py-4 px-6 rounded-2xl shadow-lg shadow-brand-500/30 flex items-center justify-center gap-3 text-lg"><i class="ph-bold ph-shopping-cart text-2xl"></i> Agregar al carrito</button></div></div>`; 
             document.getElementById('view-product').classList.add('active'); 
         };
         
         const renderStoreProfile = (sSlug) => { 
             const s = getStoreBySlug(sSlug); if(!s) return window.location.hash='#/'; 
             
-            // BOTÓN VOLVER AL INICIO SÚPER VISIBLE EN LA TIENDA
             document.getElementById('store-header-container').innerHTML = `
                 <div class="mb-8">
                     <a href="#/" class="bg-gray-900 text-white hover:bg-black font-extrabold text-sm px-6 py-3 rounded-xl inline-flex items-center transition-colors shadow-md">
@@ -503,7 +544,7 @@
             document.getElementById('view-store').classList.add('active'); 
         };
 
-        const renderCategoryView = (id) => { const c = categoriesDB.find(c => c.id === id); if(!c) return window.location.hash='#/'; document.getElementById('category-header-container').innerHTML = `<div class="flex items-center gap-5"><div class="w-20 h-20 rounded-3xl ${c.bg} ${c.color} flex justify-center items-center text-4xl shadow-inner"><i class="${c.icon}"></i></div><h1 class="text-4xl font-black text-gray-900">${c.name}</h1></div>`; currentCategoryProducts = productsDB.filter(p => getStoreById(p.storeId)?.categoryId === id); renderFilteredProducts(currentCategoryProducts); document.getElementById('view-category').classList.add('active'); };
+        const renderCategoryView = (id) => { const c = categoriesDB.find(c => c.id === id); if(!c) return window.location.hash='#/'; document.getElementById('category-header-container').innerHTML = `<div class="mb-6"><a href="#/" class="bg-white border border-gray-200 text-gray-700 hover:text-brand-600 font-bold text-sm px-5 py-2.5 rounded-xl inline-flex items-center shadow-sm transition-colors"><i class="ph-bold ph-house mr-2 text-lg"></i> Inicio</a></div><div class="flex items-center gap-5"><div class="w-20 h-20 rounded-3xl ${c.bg} ${c.color} flex justify-center items-center text-4xl shadow-inner">${c.icon}</div><h1 class="text-4xl font-black text-gray-900">${c.name}</h1></div>`; currentCategoryProducts = productsDB.filter(p => getStoreById(p.storeId)?.categoryId === id); renderFilteredProducts(currentCategoryProducts); document.getElementById('view-category').classList.add('active'); };
         const applyFilters = () => { const m1 = parseFloat(document.getElementById('filter-min-price').value) || 0, m2 = parseFloat(document.getElementById('filter-max-price').value) || Infinity; renderFilteredProducts(currentCategoryProducts.filter(p => p.price >= m1 && p.price <= m2)); };
         const renderFilteredProducts = (pr) => { document.getElementById('category-products-container').innerHTML = pr.length ? pr.map(p => createProductCardHTML(p, getStoreById(p.storeId), false)).join('') : '<div class="col-span-full py-16 text-center text-gray-400 font-bold"><i class="ph-thin ph-magnifying-glass text-5xl mb-2"></i><p>Sin resultados</p></div>'; };
 
@@ -527,7 +568,7 @@
                 <div class="px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-5 hover:bg-gray-50 transition-colors">
                     <div class="flex items-center gap-4 flex-1 min-w-0">
                         <div class="w-20 h-20 bg-gray-100 rounded-2xl overflow-hidden shadow-sm border border-gray-200 flex-shrink-0 relative">
-                            <img src="${p.image || 'https://placehold.co/100x100?text=Sin+Imagen'}" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=Sin+Imagen'" class="absolute inset-0 w-full h-full object-cover">
+                            <img src="${getSafeImageUrl(p.image)}" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=Sin+Imagen'" class="absolute inset-0 w-full h-full object-cover">
                         </div>
                         <div class="flex-1 min-w-0"><p class="text-base font-extrabold text-gray-900 truncate">${p.name}</p><p class="font-black text-brand-600 mt-1">${formatMoney(p.price)}</p></div>
                     </div>
@@ -549,13 +590,13 @@
             btn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Subiendo...'; 
             btn.disabled = true;
 
-            // SISTEMA ULTRA-COMPRESOR PARA EVITAR ROTURAS EN EXCEL
+            // SISTEMA ULTRA-COMPRESOR: Garantiza que la imagen quepa en Sheets y no se corrompa
             const reader = new FileReader();
             reader.onload = (event) => {
                 const img = new Image();
                 img.onload = async () => {
                     const canvas = document.createElement('canvas');
-                    const MAX_WIDTH = 400; // Super compresión para guardar directo en la celda
+                    const MAX_WIDTH = 400; 
                     let width = img.width; let height = img.height;
 
                     if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } } 
@@ -565,7 +606,7 @@
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, width, height);
 
-                    const compressedBase64 = canvas.toDataURL('image/jpeg', 0.5); // 50% calidad para que no se corrompa en Sheets
+                    const compressedBase64 = canvas.toDataURL('image/jpeg', 0.5); 
 
                     const payload = { action: 'addProduct', storeId: getAuthStore().id, storeName: getAuthStore().name, name: document.getElementById('new-prod-name').value, price: document.getElementById('new-prod-price').value, imageBase64: compressedBase64, description: document.getElementById('new-prod-desc').value };
                     
@@ -586,7 +627,7 @@
 
         const handleHighlightProduct = async (pId) => {
             const store = getAuthStore();
-            if(Number(store.saldo_total) < 10) { showToast("Necesitas al menos 10 créditos."); return; }
+            if(Number(store.saldo_total) < 10) { showToast("Necesitas al menos 10 créditos para destacar."); return; }
             if(!confirm("Destacar este producto costará 10 créditos y durará 5 días. ¿Deseas continuar?")) return;
             
             showToast("Procesando pago...");
@@ -642,7 +683,7 @@
         // ==========================================
         const addToCart = (id, open = false) => { const p = productsDB.find(p => p.id === id), i = cart.find(i => i.product.id === id); i ? i.quantity++ : cart.push({ product: p, quantity: 1 }); updateCartUI(); showToast(`Agregado: ${p.name}`); if(open && document.getElementById('cart-sidebar').classList.contains('translate-x-full')) toggleCart(); };
         const updateQuantity = (id, d) => { const i = cart.find(i => i.product.id === id); if(i) { i.quantity += d; if(i.quantity <= 0) cart = cart.filter(i => i.product.id !== id); updateCartUI(); } };
-        const updateCartUI = () => { const t = cart.reduce((s, i) => s + i.quantity, 0), b = document.getElementById('cart-badge'); b.innerText = t; t > 0 ? b.classList.remove('hidden') : b.classList.add('hidden'); if(cart.length === 0) { document.getElementById('cart-items-container').innerHTML = '<div class="h-full flex flex-col items-center justify-center opacity-50"><i class="ph-thin ph-shopping-cart text-6xl mb-2"></i><p class="font-bold">Carrito vacío</p></div>'; return; } const g = cart.reduce((acc, i) => { const s = getStoreById(i.product.storeId); if(!acc[s.id]) acc[s.id] = { store: s, items: [], total: 0 }; acc[s.id].items.push(i); acc[s.id].total += (i.product.price * i.quantity); return acc; }, {}); document.getElementById('cart-items-container').innerHTML = Object.entries(g).map(([id, d]) => `<div class="bg-white rounded-2xl mb-4 shadow-sm border border-gray-100 overflow-hidden"><div class="bg-gray-50 p-4 border-b border-gray-100 font-extrabold text-sm text-gray-900 flex items-center gap-2"><i class="ph-fill ph-storefront text-brand-600"></i> ${d.store.name}</div><div class="p-5 gap-5 flex flex-col">${d.items.map(i => `<div class="flex gap-4 items-center"><div class="w-14 h-14 bg-gray-100 rounded-xl overflow-hidden shadow-sm relative"><img src="${i.product.image}" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=Sin+Imagen'" class="absolute inset-0 w-full h-full object-cover"></div><div class="flex-1 min-w-0"><p class="text-sm font-extrabold truncate text-gray-900">${i.product.name}</p><p class="text-brand-600 font-black text-sm">${formatMoney(i.product.price)}</p></div><div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg"><button onclick="updateQuantity('${i.product.id}', -1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">-</button><span class="w-7 text-center text-xs font-black">${i.quantity}</span><button onclick="updateQuantity('${i.product.id}', 1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">+</button></div></div>`).join('')}</div><div class="p-5 border-t border-gray-100"><div class="flex justify-between font-bold mb-4 text-gray-900"><span class="text-gray-500 uppercase tracking-wide text-xs">Subtotal:</span><span class="text-xl">${formatMoney(d.total)}</span></div><button onclick="sendOrder('${id}')" class="w-full bg-[#25D366] hover:bg-[#1da851] text-white font-extrabold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 transition-all transform hover:-translate-y-0.5"><i class="ph-fill ph-whatsapp-logo text-2xl"></i> Pedir por WhatsApp</button></div></div>`).join(''); };
+        const updateCartUI = () => { const t = cart.reduce((s, i) => s + i.quantity, 0), b = document.getElementById('cart-badge'); b.innerText = t; t > 0 ? b.classList.remove('hidden') : b.classList.add('hidden'); if(cart.length === 0) { document.getElementById('cart-items-container').innerHTML = '<div class="h-full flex flex-col items-center justify-center opacity-50"><i class="ph-thin ph-shopping-cart text-6xl mb-2"></i><p class="font-bold">Carrito vacío</p></div>'; return; } const g = cart.reduce((acc, i) => { const s = getStoreById(i.product.storeId); if(!acc[s.id]) acc[s.id] = { store: s, items: [], total: 0 }; acc[s.id].items.push(i); acc[s.id].total += (i.product.price * i.quantity); return acc; }, {}); document.getElementById('cart-items-container').innerHTML = Object.entries(g).map(([id, d]) => `<div class="bg-white rounded-2xl mb-4 shadow-sm border border-gray-100 overflow-hidden"><div class="bg-gray-50 p-4 border-b border-gray-100 font-extrabold text-sm text-gray-900 flex items-center gap-2"><i class="ph-fill ph-storefront text-brand-600"></i> ${d.store.name}</div><div class="p-5 gap-5 flex flex-col">${d.items.map(i => `<div class="flex gap-4 items-center"><div class="w-14 h-14 bg-gray-100 rounded-xl overflow-hidden shadow-sm relative"><img src="${getSafeImageUrl(i.product.image)}" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text=Sin+Imagen'" class="absolute inset-0 w-full h-full object-cover"></div><div class="flex-1 min-w-0"><p class="text-sm font-extrabold truncate text-gray-900">${i.product.name}</p><p class="text-brand-600 font-black text-sm">${formatMoney(i.product.price)}</p></div><div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg"><button onclick="updateQuantity('${i.product.id}', -1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">-</button><span class="w-7 text-center text-xs font-black">${i.quantity}</span><button onclick="updateQuantity('${i.product.id}', 1)" class="w-7 h-7 flex justify-center items-center text-gray-600 font-bold">+</button></div></div>`).join('')}</div><div class="p-5 border-t border-gray-100"><div class="flex justify-between font-bold mb-4 text-gray-900"><span class="text-gray-500 uppercase tracking-wide text-xs">Subtotal:</span><span class="text-xl">${formatMoney(d.total)}</span></div><button onclick="sendOrder('${id}')" class="w-full bg-[#25D366] hover:bg-[#1da851] text-white font-extrabold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 transition-all transform hover:-translate-y-0.5"><i class="ph-fill ph-whatsapp-logo text-2xl"></i> Pedir por WhatsApp</button></div></div>`).join(''); };
         
         const sendOrder = (sId) => { 
             const store = getStoreById(sId);
@@ -651,10 +692,8 @@
             const d = cart.reduce((acc, i) => { if(i.product.storeId === sId) { acc.items.push(i); acc.total += (i.product.price * i.quantity); if(!acc.p) acc.p = store.phone; } return acc; }, { items: [], total: 0, p: '' }); 
             let m = `*¡Hola!* 👋\nMe interesa esto de MiPueblo Market:\n\n`; d.items.forEach(i => m += `▪️ ${i.quantity}x ${i.product.name} (${formatMoney(i.product.price * i.quantity)})\n`); m += `\n*Total: ${formatMoney(d.total)}*`; 
             
-            // 1. Redirección instantánea sin bloqueos de navegador
             window.open(`https://api.whatsapp.com/send?phone=${d.p}&text=${encodeURIComponent(m)}`, '_blank'); 
 
-            // 2. Deducción asíncrona segura
             setTimeout(async () => {
                 const last = localStorage.getItem(`last_${sId}`), now = new Date().getTime(); 
                 if(!last || (now - parseInt(last)) > 1800000) { 

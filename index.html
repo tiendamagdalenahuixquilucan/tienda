@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Pueblo Market</title>
+    <!-- Tailwind CSS, Phosphor Icons y Chart.js para la Gráfica -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -68,6 +69,7 @@
     </nav>
 
     <main class="flex-1 flex flex-col">
+        <!-- VISTA: HOME -->
         <section id="view-home" class="view-section">
             <div class="bg-gradient-to-b from-brand-50 to-white pt-8 pb-4 border-b border-gray-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,8 +77,9 @@
                         <h1 class="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-2">Descubre lo mejor de <span class="text-brand-600">tu ciudad</span></h1>
                         <p class="text-gray-500 font-medium text-sm md:text-base">Pide directo a los negocios locales por WhatsApp.</p>
                     </div>
-                    <div class="relative rounded-2xl overflow-hidden shadow-xl shadow-gray-200/50 group animate-fade-in-up" style="animation-delay: 0.1s;">
-                        <div class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory h-[200px] sm:h-[300px] md:h-[400px] w-full scroll-smooth" id="ad-banners" onscroll="updateCarouselDots()"></div>
+                    <!-- ARREGLO DE BANNERS EN MÓVIL: Se usa aspect-ratio dinámico en lugar de alturas fijas y bg-gray-100 -->
+                    <div class="relative rounded-2xl overflow-hidden shadow-xl shadow-gray-200/50 group animate-fade-in-up bg-gray-100" style="animation-delay: 0.1s;">
+                        <div class="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] max-h-[400px] w-full scroll-smooth" id="ad-banners" onscroll="updateCarouselDots()"></div>
                         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md" id="banner-dots"></div>
                     </div>
                 </div>
@@ -330,6 +333,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-white border-t border-gray-100 mt-auto py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2 opacity-50"><i class="ph-fill ph-storefront text-xl text-brand-600"></i><span class="font-bold text-gray-900 text-sm">MiPueblo Market © 2026</span></div>
@@ -340,6 +344,7 @@
         </div>
     </footer>
 
+    <!-- MODAL EDITAR -->
     <div id="modal-edit-product" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center fade-in">
         <div class="bg-white p-6 sm:p-8 rounded-3xl w-full max-w-md shadow-2xl m-4 border border-gray-100">
             <h3 class="text-xl font-extrabold mb-6 text-gray-900 flex items-center gap-2"><i class="ph-bold ph-pencil-simple text-brand-600"></i> Editar Producto</h3>
@@ -356,6 +361,7 @@
         </div>
     </div>
 
+    <!-- Sidebar Carrito -->
     <div id="cart-overlay" class="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-50 hidden transition-opacity" onclick="toggleCart()"></div>
     <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white shadow-2xl z-50 translate-x-full transition-transform duration-300 flex flex-col rounded-l-3xl overflow-hidden border-l border-gray-100">
         <div class="px-6 py-5 border-b border-gray-100 flex justify-between items-center bg-white"><h2 class="text-xl font-extrabold flex items-center gap-2 text-gray-900"><i class="ph-bold ph-shopping-cart text-brand-600"></i> Tu Carrito</h2><button onclick="toggleCart()" class="p-2 bg-gray-50 hover:bg-red-50 hover:text-red-500 rounded-full transition-colors"><i class="ph-bold ph-x"></i></button></div>
@@ -394,7 +400,7 @@
         const getSafeImageUrl = (url) => {
             if (!url) return 'https://placehold.co/400x400?text=Sin+Imagen';
             if (url.includes('drive.google.com')) {
-                const match = url.match(/id=([a-zA-Z0-9_-]+)/);
+                const match = url.match(/[?&]id=([a-zA-Z0-9_-]+)/) || url.match(/\/d\/([a-zA-Z0-9_-]+)/);
                 if (match && match[1]) return `https://lh3.googleusercontent.com/d/${match[1]}`;
             }
             return url;
@@ -493,7 +499,8 @@
         window.addEventListener('hashchange', router);
 
         const renderHome = () => {
-            document.getElementById('ad-banners').innerHTML = bannersDB.map((b, i) => `<div class="snap-center shrink-0 w-full relative cursor-pointer" onclick="window.location.hash='#/${getStoreById(b.storeId)?.slug || getStoreById(b.storeId)?.id || ''}'"><img src="${getSafeImageUrl(b.imageUrl)}" onerror="this.src='https://placehold.co/800x400?text=Banner'" class="w-full h-full object-cover"></div>`).join('');
+            // ARREGLO DE BANNERS EN MÓVIL: class object-contain aplicada en img para evitar recortes, fondo bg-gray-100/brand-50 para rellenar
+            document.getElementById('ad-banners').innerHTML = bannersDB.map((b, i) => `<div class="snap-center shrink-0 w-full h-full relative cursor-pointer flex items-center justify-center bg-gray-50" onclick="window.location.hash='#/${getStoreById(b.storeId)?.slug || getStoreById(b.storeId)?.id || ''}'"><img src="${getSafeImageUrl(b.imageUrl)}" onerror="this.src='https://placehold.co/800x400?text=Banner'" class="w-full h-full object-contain p-1"></div>`).join('');
             document.getElementById('banner-dots').innerHTML = bannersDB.map((_, i) => `<div class="carousel-dot w-2 h-2 rounded-full bg-white/50 cursor-pointer shadow-sm" onclick="document.getElementById('ad-banners').scrollTo({left: document.getElementById('ad-banners').clientWidth * ${i}, behavior: 'smooth'})" id="dot-${i}"></div>`).join('');
             if(bannersDB.length) document.getElementById('dot-0')?.classList.add('active');
             
@@ -705,7 +712,7 @@
         const handleDeleteStore = async () => { const code = prompt("ZONA DE PELIGRO: Escribe ELIMINAR para confirmar"); if(code !== 'ELIMINAR') return; const res = await postToAppsScript({ action: 'deleteStore', storeId: getAuthStore().id }); if(res.status === 'success') { handleLogout(); } };
 
         // ==========================================
-        // 6. LOGOUT (CORRECCIÓN DE REDIRECCIÓN AL HOME)
+        // 6. AUTENTICACIÓN Y MENÚ LOGUEADO
         // ==========================================
         const updateNavAuthStatus = () => { 
             const c = document.getElementById('auth-nav-container'); const store = getAuthStore();
@@ -713,15 +720,12 @@
         };
         const handleLogin = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-login'); btn.innerText = "Verificando..."; btn.disabled = true; const res = await postToAppsScript({ action: 'login', email: document.getElementById('login-email').value, password: document.getElementById('login-password').value }); if (res.status === 'success') { document.getElementById('login-error').classList.add('hidden'); sessionStorage.setItem('auth_store', JSON.stringify(res.store)); window.location.hash = '#/panel'; } else { const err = document.getElementById('login-error'); err.innerText = "Error al iniciar sesión."; err.classList.remove('hidden'); } btn.innerText = "Iniciar Sesión"; btn.disabled = false; };
         const handleRegistration = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-register'); btn.innerText = 'Creando tienda...'; btn.disabled = true; const payload = { action: 'registerStore', name: document.getElementById('reg-name').value, categoryId: document.getElementById('register-category').value, responsable: document.getElementById('reg-resp').value, phone: document.getElementById('reg-phone').value, email: document.getElementById('reg-email').value, password: document.getElementById('reg-pass').value }; const res = await postToAppsScript(payload); if(res.status === 'success') { showToast("¡Tienda registrada! Inicia sesión."); e.target.reset(); window.location.hash = '#/login'; } btn.innerText = 'Registrar y Obtener Panel'; btn.disabled = false; };
-        
-        // CORRECCIÓN APLICADA: Al cerrar sesión envía al Home ('#/')
         const handleLogout = () => { sessionStorage.removeItem('auth_store'); updateNavAuthStatus(); window.location.hash = '#/'; showToast("Sesión cerrada."); };
-        
         const requestResetToken = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-req-token'); btn.innerText = "Generando..."; btn.disabled = true; resetEmailTemporal = document.getElementById('reset-email').value; const res = await postToAppsScript({ action: 'requestResetToken', email: resetEmailTemporal }); if (res.status === 'success') { document.getElementById('token-display').innerText = res.token; document.getElementById('form-req-token').classList.add('hidden'); document.getElementById('reset-desc').innerText = "Ingresa el token que apareció y tu nueva contraseña."; document.getElementById('form-validate-token').classList.remove('hidden'); } else { showToast(res.message || "Error al solicitar token."); } btn.innerText = "Generar Token"; btn.disabled = false; };
         const confirmPasswordReset = async (e) => { e.preventDefault(); const btn = document.getElementById('btn-confirm-reset'); btn.innerText = "Actualizando..."; btn.disabled = true; const res = await postToAppsScript({ action: 'resetPassword', email: resetEmailTemporal, token: document.getElementById('reset-token-input').value, newPassword: document.getElementById('reset-new-password').value }); if (res.status === 'success') { showToast("¡Contraseña actualizada!"); window.location.hash = '#/login'; document.getElementById('form-req-token').reset(); document.getElementById('form-validate-token').reset(); document.getElementById('form-req-token').classList.remove('hidden'); document.getElementById('form-validate-token').classList.add('hidden'); } else { showToast(res.message || "Token inválido."); } btn.innerText = "Guardar Nueva Contraseña"; btn.disabled = false; };
 
         // ==========================================
-        // 7. CARRITO DE COMPRAS
+        // 7. CARRITO DE COMPRAS Y PEDIDOS WHATSAPP
         // ==========================================
         const addToCart = (id, open = false) => { const p = productsDB.find(p => p.id === id), i = cart.find(i => i.product.id === id); i ? i.quantity++ : cart.push({ product: p, quantity: 1 }); updateCartUI(); showToast(`Agregado: ${p.name}`); if(open && document.getElementById('cart-sidebar').classList.contains('translate-x-full')) toggleCart(); };
         const updateQuantity = (id, d) => { const i = cart.find(i => i.product.id === id); if(i) { i.quantity += d; if(i.quantity <= 0) cart = cart.filter(i => i.product.id !== id); updateCartUI(); } };
